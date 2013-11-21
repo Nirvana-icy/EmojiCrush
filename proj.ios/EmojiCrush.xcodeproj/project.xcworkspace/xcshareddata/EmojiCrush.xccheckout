@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CC4B1FEC-05CA-4C5D-A455-DDCD6E6A264E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>EmojiCrush</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>827597CA-CD7B-4C43-8E56-E6ADFABA6108</key>
+		<string>https://github.com/Nirvana-icy/EmojiCrush.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>proj.ios/EmojiCrush.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>827597CA-CD7B-4C43-8E56-E6ADFABA6108</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Nirvana-icy/EmojiCrush.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>827597CA-CD7B-4C43-8E56-E6ADFABA6108</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>827597CA-CD7B-4C43-8E56-E6ADFABA6108</string>
+			<key>IDESourceControlWCCName</key>
+			<string>EmojiCrush</string>
+		</dict>
+	</array>
+</dict>
+</plist>
