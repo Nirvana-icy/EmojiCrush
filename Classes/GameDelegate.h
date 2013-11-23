@@ -14,9 +14,6 @@
 
 class GameDelegate
 {
-private:
-    static GameDelegate*    s_SharedGameDelegate;
-    void                    init();
 public:
     
     GameDelegate();
@@ -28,6 +25,10 @@ public:
     void                    returnToGame();
     
     static GameDelegate*    sharedGameDelegate();
+    
+private:
+    static GameDelegate*    s_SharedGameDelegate;
+    void                    init();
 };
 
 #endif /* defined(__EmojiCrush__GameDelegate__) */

@@ -7,6 +7,7 @@
 //
 
 #include "GameDelegate.h"
+#include "MainMenuScene.h"
 
 GameDelegate* GameDelegate::s_SharedGameDelegate = NULL;
 
@@ -47,11 +48,11 @@ void GameDelegate::startGame()
 
 void GameDelegate::openMainMenu()
 {
-//    MainMenuScene* mmscene = new MainMenuScene();
-//    mmscene->init();
-//    
-//    CCDirector::sharedDirector()->runWithScene(mmscene);
-//    mmscene->release();
+    MainMenuScene *p_MainMenuScene = new MainMenuScene();
+    p_MainMenuScene->init();
+    
+    CCDirector::sharedDirector()->runWithScene(p_MainMenuScene);
+    p_MainMenuScene->release();
 }
 
 void GameDelegate::returnToMainMenu()

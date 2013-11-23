@@ -27,8 +27,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pGameController = new GameController();
     pGameController->autorelease();
     if(!pGameController->init())
+    {
         return false;
-    
+    }
     pGameController->showMainMenu();
 
     return true;

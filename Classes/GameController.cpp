@@ -19,7 +19,7 @@ GameController::~GameController()
 
 bool GameController::init()
 {
-    return GameController::init();
+    return CCLayer::init();
 }
 
 void GameController::showMainMenu()
