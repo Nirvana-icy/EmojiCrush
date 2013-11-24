@@ -2,7 +2,6 @@
 
 MainMenuView::MainMenuView()
 {
-
 }
 
 bool MainMenuView::init(bool fromGame)
@@ -20,7 +19,7 @@ bool MainMenuView::init(bool fromGame)
     if (fromGame)
         caption = "Resume Game";
 
-    CCLabelTTF* label = CCLabelTTF::create(caption.getCString(), "Resources/brookeshappelldots.ttf", 68);
+    CCLabelTTF* label = CCLabelTTF::create(caption.getCString(), "fonts/Marker Felt.ttf", 68);
     m_pStartButton = CCMenuItemLabel::create(label);
     m_pStartButton->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2) );
 

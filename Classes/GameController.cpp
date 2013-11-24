@@ -25,7 +25,7 @@ bool GameController::init()
 void GameController::showMainMenu()
 {
     setTouchEnabled(true);
-    GameDelegate::sharedGameDelegate()->openMainMenu();
+    GameDelegate::sharedGameDelegate()->showMainMenu();
 }
 
 void GameController::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)

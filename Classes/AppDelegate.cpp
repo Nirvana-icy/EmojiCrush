@@ -1,4 +1,5 @@
 #include "AppDelegate.h"
+#include "AppMacros.h"
 
 USING_NS_CC;
 
@@ -16,7 +17,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
-	
+    //Set the design resolution
+    
+    pEGLView->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionFixedWidth);
+    
+    pDirector->setContentScaleFactor(640/designResolutionSize.width);
+
     // turn on display FPS
     pDirector->setDisplayStats(true);
 

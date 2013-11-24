@@ -8,6 +8,7 @@
 
 #include "GameDelegate.h"
 #include "MainMenuScene.h"
+#include "LoadingScene.h"
 
 GameDelegate* GameDelegate::s_SharedGameDelegate = NULL;
 
@@ -45,13 +46,25 @@ void GameDelegate::startGame()
 //    CCDirector::sharedDirector()->replaceScene( CCTransitionFadeTR::create(0.8f, scene) );
 //    scene->release();
 }
-
-void GameDelegate::openMainMenu()
+void GameDelegate::showMainMenu()
 {
+    LoadingScene* pLoadingScene = new LoadingScene();
+    pLoadingScene->autorelease();
+    if(!pLoadingScene->initWithTargetScene(TargetSceneMainMenu))
+        CCLOG("Init LoadingScene(from loadingScene to MainMenu Scene) failed");
+    //run the loadingScene
+    CCDirector::sharedDirector()->runWithScene(pLoadingScene);
+    //Set one schedule to run the update function which will set up the next scene
+    CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(LoadingScene::update),pLoadingScene,1,false);
+}
+
+void GameDelegate::switchToMainMenuScene()
+{
+    
     MainMenuScene *p_MainMenuScene = new MainMenuScene();
     p_MainMenuScene->init();
     
-    CCDirector::sharedDirector()->runWithScene(p_MainMenuScene);
+    CCDirector::sharedDirector()->replaceScene(p_MainMenuScene);
     p_MainMenuScene->release();
 }
 

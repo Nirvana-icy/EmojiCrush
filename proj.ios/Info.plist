@@ -60,7 +60,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UIAppFonts</key>
-	<array/>
+	<array>
+		<string>fonts/Marker Felt.ttf</string>
+	</array>
 	<key>UILaunchImageFile~ipad</key>
 	<string>Default</string>
 	<key>UILaunchImages~ipad</key>

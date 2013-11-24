@@ -20,9 +20,10 @@ public:
     ~GameDelegate();
     
     void                    startGame();
-    void                    openMainMenu();
+    void                    switchToMainMenuScene();
     void                    returnToMainMenu();
     void                    returnToGame();
+    void                    showMainMenu();
     
     static GameDelegate*    sharedGameDelegate();
     
