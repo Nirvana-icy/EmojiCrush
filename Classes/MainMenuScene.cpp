@@ -9,6 +9,7 @@
 #include "MainMenuScene.h"
 #include "SimpleAudioEngine.h"
 #include "GameDelegate.h"
+
 using namespace CocosDenshion;
 
 MainMenuScene::MainMenuScene()
@@ -18,7 +19,6 @@ MainMenuScene::MainMenuScene()
 
 MainMenuScene::~MainMenuScene()
 {
-    SimpleAudioEngine::sharedEngine()->end();
 }
 
 void MainMenuScene::onEnter()
@@ -26,6 +26,13 @@ void MainMenuScene::onEnter()
     CCScene::onEnter();
     //Play the Background Music
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic("MainMenu_BGM.mp3",true);
+}
+
+void MainMenuScene::onExitTransitionDidStart()
+{
+    CCScene::onExitTransitionDidStart();
+    //Stop Playing the BGM and release the BGM source
+    SimpleAudioEngine::sharedEngine()->stopBackgroundMusic(true);
 }
 
 bool MainMenuScene::init(bool bInitFromGame)
@@ -48,6 +55,7 @@ bool MainMenuScene::init(bool bInitFromGame)
         pMainMenuView->release();
         //Preload the Background Music
         SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("MainMenu_BGM.mp3");
+        SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.5);
         return true;
     }
     return false;

@@ -1,5 +1,7 @@
 #include "AppDelegate.h"
 #include "AppMacros.h"
+#include "SimpleAudioEngine.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -9,6 +11,7 @@ AppDelegate::AppDelegate() {
 
 AppDelegate::~AppDelegate() 
 {
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->end();
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
@@ -21,7 +24,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
     pEGLView->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, kResolutionFixedWidth);
     
-    pDirector->setContentScaleFactor(640/designResolutionSize.width);
+    pDirector->setContentScaleFactor(RESOURCE_IMG_WIDTH/designResolutionSize.width);
 
     // turn on display FPS
     pDirector->setDisplayStats(true);
@@ -46,7 +49,7 @@ void AppDelegate::applicationDidEnterBackground() {
     CCDirector::sharedDirector()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
@@ -54,5 +57,5 @@ void AppDelegate::applicationWillEnterForeground() {
     CCDirector::sharedDirector()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+    CocosDenshion::SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 }

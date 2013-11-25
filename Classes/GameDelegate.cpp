@@ -9,6 +9,7 @@
 #include "GameDelegate.h"
 #include "MainMenuScene.h"
 #include "LoadingScene.h"
+#include "GamePlayingScene.h"
 
 GameDelegate* GameDelegate::s_SharedGameDelegate = NULL;
 
@@ -40,11 +41,11 @@ void GameDelegate::init()
 
 void GameDelegate::startGame()
 {
-//    MainScene* scene = new MainScene();
-//    scene->init();
-//    
-//    CCDirector::sharedDirector()->replaceScene( CCTransitionFadeTR::create(0.8f, scene) );
-//    scene->release();
+    GamePlayingScene *pGamePlayignScene = new GamePlayingScene();
+    pGamePlayignScene->autorelease();
+    pGamePlayignScene->init();
+    
+    CCDirector::sharedDirector()->replaceScene( CCTransitionFadeTR::create(0.8f, pGamePlayignScene) );
 }
 void GameDelegate::showMainMenu()
 {

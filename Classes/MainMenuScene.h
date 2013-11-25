@@ -22,6 +22,7 @@ public:
     virtual ~MainMenuScene();
     
     virtual void onEnter();
+    virtual void onExitTransitionDidStart();
     bool    init(bool bInitFromGame = false);
     
     void    startGameCallback(CCObject * pSender);

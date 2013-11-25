@@ -15,9 +15,9 @@ bool MainMenuView::init(bool fromGame)
 
     m_pMainMenu = CCMenu::create();
 
-    CCString caption = "Start Game";
+    CCString caption = "Start Game.";
     if (fromGame)
-        caption = "Resume Game";
+        caption = "Resume Game.";
 
     CCLabelTTF* label = CCLabelTTF::create(caption.getCString(), "fonts/Marker Felt.ttf", 68);
     m_pStartButton = CCMenuItemLabel::create(label);
