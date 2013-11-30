@@ -12,6 +12,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/MainMenuScene.cpp \
                    ../../Classes/LoadingScene.cpp \
                    ../../Classes/GamePlayingScene.cpp \
+		   ../../Classes/GamePlayingLayer.cpp \
 		   ../../Classes/EmojiSprite.cpp \
                    ../../Classes/MainMenuView.cpp 
 

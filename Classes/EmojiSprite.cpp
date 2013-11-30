@@ -10,13 +10,37 @@
 
 EmojiSprite::EmojiSprite()
 {
-    slideDownCounter = 0;
+    m_slideDownCounter = 0;
+}
+
+EmojiSprite* EmojiSprite::createEmojiWithType(int emojiType)
+{
+    EmojiSprite *p_EmojiSprite = new EmojiSprite();
+    if (p_EmojiSprite && p_EmojiSprite->initSpriteWithType(emojiType))
+    {
+        p_EmojiSprite->autorelease();
+        return p_EmojiSprite;
+    }
+    CC_SAFE_DELETE(p_EmojiSprite);
+    return NULL;
+}
+
+EmojiSprite* EmojiSprite::createEmojiWithRandom()
+{
+    EmojiSprite *p_EmojiSprite = new EmojiSprite();
+    if (p_EmojiSprite && p_EmojiSprite->initSpriteWithRandom())
+    {
+        p_EmojiSprite->autorelease();
+        return p_EmojiSprite;
+    }
+    CC_SAFE_DELETE(p_EmojiSprite);
+    return NULL;
 }
 
 bool EmojiSprite::initSpriteWithType(int emojiType)
 {
     bool bRet = true;
-    if(CCSprite::init())
+    if(CCNode::init())
     {
         //init the Sprite with Sprite Type
         switch (emojiType) {
@@ -67,7 +91,7 @@ bool EmojiSprite::initSpriteWithType(int emojiType)
 bool EmojiSprite::initSpriteWithRandom()
 {
     bool bRet = true;
-    if(CCSprite::init())
+    if(CCNode::init())
     {
         //init the Sprite with random
         float f_Random = CCRANDOM_0_1()*6;
@@ -81,6 +105,21 @@ bool EmojiSprite::initSpriteWithRandom()
         bRet = false;
     }
     return bRet;
+}
+
+CCSprite* EmojiSprite::getEmojiSprite()
+{
+    return m_pEmojiSprite;
+}
+
+void EmojiSprite::setSlideDownConter(int conter)
+{
+    m_slideDownCounter = conter;
+}
+
+int EmojiSprite::getSlideDownConter()
+{
+    return m_slideDownCounter;
 }
 
 EmojiSprite::~EmojiSprite()

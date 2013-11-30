@@ -230,6 +230,7 @@
 		379BB9D317F03F3700829B88 /* CCSGUIReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99117F03F3700829B88 /* CCSGUIReader.cpp */; };
 		379BB9D417F03F3700829B88 /* CCSSceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* CCSSceneReader.cpp */; };
 		8318C14218497F77005CF03A /* EmojiSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8318C14018497F77005CF03A /* EmojiSprite.cpp */; };
+		8318C1461849D0BF005CF03A /* GamePlayingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8318C1441849D0BF005CF03A /* GamePlayingLayer.cpp */; };
 		831B3B9F1840E5C100A0B137 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B981840E5C100A0B137 /* Icon-57.png */; };
 		831B3BA01840E5C100A0B137 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B991840E5C100A0B137 /* Icon-72.png */; };
 		831B3BA11840E5C100A0B137 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B9A1840E5C100A0B137 /* Icon-76.png */; };
@@ -748,6 +749,8 @@
 		379BB99417F03F3700829B88 /* CCSSceneReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSSceneReader.h; sourceTree = "<group>"; };
 		8318C14018497F77005CF03A /* EmojiSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmojiSprite.cpp; path = ../Classes/EmojiSprite.cpp; sourceTree = "<group>"; };
 		8318C14118497F77005CF03A /* EmojiSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmojiSprite.h; path = ../Classes/EmojiSprite.h; sourceTree = "<group>"; };
+		8318C1441849D0BF005CF03A /* GamePlayingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GamePlayingLayer.cpp; path = ../Classes/GamePlayingLayer.cpp; sourceTree = "<group>"; };
+		8318C1451849D0BF005CF03A /* GamePlayingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePlayingLayer.h; path = ../Classes/GamePlayingLayer.h; sourceTree = "<group>"; };
 		831B3B981840E5C100A0B137 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		831B3B991840E5C100A0B137 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		831B3B9A1840E5C100A0B137 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
@@ -1327,6 +1330,8 @@
 				831B3BCB1840F3D300A0B137 /* MainMenuView.h */,
 				833C70A518437BE300C1F2E9 /* GamePlayingScene.cpp */,
 				833C70A618437BE300C1F2E9 /* GamePlayingScene.h */,
+				8318C1441849D0BF005CF03A /* GamePlayingLayer.cpp */,
+				8318C1451849D0BF005CF03A /* GamePlayingLayer.h */,
 				8318C14018497F77005CF03A /* EmojiSprite.cpp */,
 				8318C14118497F77005CF03A /* EmojiSprite.h */,
 			);
@@ -2039,6 +2044,7 @@
 				15A3DA571682F826002FB0C5 /* CCEditBoxImplIOS.mm in Sources */,
 				15A3DA591682F826002FB0C5 /* CCScrollView.cpp in Sources */,
 				15A3DA5A1682F826002FB0C5 /* CCSorting.cpp in Sources */,
+				8318C1461849D0BF005CF03A /* GamePlayingLayer.cpp in Sources */,
 				15A3DA5B1682F826002FB0C5 /* CCTableView.cpp in Sources */,
 				15A3DA5C1682F826002FB0C5 /* CCTableViewCell.cpp in Sources */,
 				15A3DA5D1682F826002FB0C5 /* HttpClient.cpp in Sources */,

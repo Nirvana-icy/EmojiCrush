@@ -31,20 +31,26 @@ typedef enum
     Sprite_Tusiji,
 } EmojiType;
 
-class EmojiSprite: public CCSprite
+class EmojiSprite: public CCNode
 {
 public:
     EmojiSprite();
     ~EmojiSprite();
     
+    static EmojiSprite* createEmojiWithType(int emojiType);
+    static EmojiSprite* createEmojiWithRandom();
+    
     bool initSpriteWithType(int emojiType);
     bool initSpriteWithRandom();
     
-    CCSprite *m_pEmojiSprite;
-    int slideDownCounter;
+    void setSlideDownConter(int conter);
+    int getSlideDownConter();
+    CCSprite* getEmojiSprite();
     
 protected:
 private:
+    int m_slideDownCounter;
+    CCSprite *m_pEmojiSprite;
 };
 
 #endif /* defined(__EmojiCrush__EmojiSprite__) */

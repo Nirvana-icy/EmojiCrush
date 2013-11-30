@@ -7,6 +7,7 @@
 //
 #include "GamePlayingScene.h"
 #include "SimpleAudioEngine.h"
+#include "GamePlayingLayer.h"
 
 using namespace CocosDenshion;
 
@@ -30,7 +31,13 @@ bool GamePlayingScene::init()
         pBackgroundImg->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2));
         pBackgroundLayer->addChild(pBackgroundImg);
         //Add Background Layer to the scene with the zOrder zOrder_BackgroundLayer
-        addChild(pBackgroundLayer, zOrder_BackgroundLayer);
+        addChild(pBackgroundLayer);
+        //init the GamePlayingLayer
+        GamePlayingLayer *pGamePlayingLayer = new GamePlayingLayer();
+        if (pGamePlayingLayer->initTheGame()) {
+            pGamePlayingLayer->autorelease();
+        }
+        addChild(pGamePlayingLayer);
         //init the Background Music
         SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("Gaming_BGM.mp3");
         SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.3);

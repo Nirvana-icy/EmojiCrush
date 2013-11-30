@@ -14,13 +14,6 @@
 
 using namespace cocos2d;
 
-typedef enum {
-    zOrder_BackgroundLayer = 0,
-    zOrder_GamingLayer,
-    zOrder_GameDashBoardLayer,
-    zOrder_Max,
-}GamingScene_zOrder;
-
 class GamePlayingScene : public cocos2d::CCScene
 {
 public:

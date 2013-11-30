@@ -28,17 +28,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
     bool bRet = true;
-    // create the Game Controller and put it in the aulto release pool.
-//    pGameController = new GameController();
-//    pGameController->autorelease();
-//    if(!pGameController->init())
-//    {
-//        bRet = false;
-//    }
-//    pGameController->showMainMenu();
     GameDelegate::sharedGameDelegate()->showMainMenu();
-
-
+    
     return bRet;
 }
 
