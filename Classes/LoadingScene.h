@@ -16,11 +16,9 @@ using namespace cocos2d;
 
 typedef enum
 {
-    TargetSceneINVALID = 0,
     TargetSceneMainMenu,
     TargetSceneStartGame,
     TargetSceneGoBackGame,
-    TargetSceneMAX,
 } TargetScenes;
 
 class LoadingScene: public CCScene

@@ -7,7 +7,7 @@ MainMenuView::MainMenuView()
 bool MainMenuView::init(bool fromGame)
 {
     CCLayer::init();
-
+    //Load the background image
 	CCSprite    *pBackground = CCSprite::create();
     pBackground->initWithFile("MainMenu_Background_Img.png");
     pBackground->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2));

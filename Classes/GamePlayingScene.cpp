@@ -8,8 +8,6 @@
 #include "GamePlayingScene.h"
 #include "SimpleAudioEngine.h"
 
-#include "EmojiSpirit.h"
-
 using namespace CocosDenshion;
 
 GamePlayingScene::GamePlayingScene()
@@ -31,7 +29,7 @@ bool GamePlayingScene::init()
         pBackgroundImg->initWithFile("Gaming_Background.png");
         pBackgroundImg->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2));
         pBackgroundLayer->addChild(pBackgroundImg);
-        //Add Background Layer to the scene
+        //Add Background Layer to the scene with the zOrder zOrder_BackgroundLayer
         addChild(pBackgroundLayer, zOrder_BackgroundLayer);
         //init the Background Music
         SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("Gaming_BGM.mp3");

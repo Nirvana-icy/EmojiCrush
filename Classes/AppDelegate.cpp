@@ -2,6 +2,7 @@
 #include "AppMacros.h"
 #include "SimpleAudioEngine.h"
 #include "SimpleAudioEngine.h"
+#include "GameDelegate.h"
 
 USING_NS_CC;
 
@@ -28,13 +29,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
     pDirector->setAnimationInterval(1.0 / 60);
     bool bRet = true;
     // create the Game Controller and put it in the aulto release pool.
-    pGameController = new GameController();
-    pGameController->autorelease();
-    if(!pGameController->init())
-    {
-        bRet = false;
-    }
-    pGameController->showMainMenu();
+//    pGameController = new GameController();
+//    pGameController->autorelease();
+//    if(!pGameController->init())
+//    {
+//        bRet = false;
+//    }
+//    pGameController->showMainMenu();
+    GameDelegate::sharedGameDelegate()->showMainMenu();
+
 
     return bRet;
 }

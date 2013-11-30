@@ -20,7 +20,7 @@ public:
     ~GameDelegate();
     
     void                    startGame();
-    void                    switchToMainMenuScene();
+    void                    switchFromLoadingSceneToMainMenuScene();
     void                    returnToMainMenu();
     void                    returnToGame();
     void                    showMainMenu();

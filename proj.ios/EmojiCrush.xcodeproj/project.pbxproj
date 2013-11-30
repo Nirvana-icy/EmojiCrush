@@ -229,7 +229,7 @@
 		379BB9D217F03F3700829B88 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 379BB98D17F03F3700829B88 /* sconscript */; };
 		379BB9D317F03F3700829B88 /* CCSGUIReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99117F03F3700829B88 /* CCSGUIReader.cpp */; };
 		379BB9D417F03F3700829B88 /* CCSSceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* CCSSceneReader.cpp */; };
-		8318C14218497F77005CF03A /* EmojiSpirit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8318C14018497F77005CF03A /* EmojiSpirit.cpp */; };
+		8318C14218497F77005CF03A /* EmojiSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8318C14018497F77005CF03A /* EmojiSprite.cpp */; };
 		831B3B9F1840E5C100A0B137 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B981840E5C100A0B137 /* Icon-57.png */; };
 		831B3BA01840E5C100A0B137 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B991840E5C100A0B137 /* Icon-72.png */; };
 		831B3BA11840E5C100A0B137 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B9A1840E5C100A0B137 /* Icon-76.png */; };
@@ -259,11 +259,9 @@
 		83582B3218424F4400150609 /* MainMenu_Background_Img.png in Resources */ = {isa = PBXBuildFile; fileRef = 83582B3118424F4400150609 /* MainMenu_Background_Img.png */; };
 		83582B351842549C00150609 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 83582B331842549C00150609 /* Default.png */; };
 		83582B361842549C00150609 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83582B341842549C00150609 /* Default@2x.png */; };
-		8359ABED183E5CEE00DBA41A /* GameController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8359ABEB183E5CEE00DBA41A /* GameController.cpp */; };
 		8359ABF2183E651100DBA41A /* GameDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8359ABF0183E651100DBA41A /* GameDelegate.cpp */; };
 		837544BF18404FE000058EF3 /* MainMenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 837544BD18404FE000058EF3 /* MainMenuScene.cpp */; };
 		837544C11840568C00058EF3 /* MainMenu_BGM.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 837544C01840568C00058EF3 /* MainMenu_BGM.mp3 */; };
-		838AFE841842429800556B7F /* VisibleRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 838AFE821842429800556B7F /* VisibleRect.cpp */; };
 		83F1A7EF1841DADB000B363A /* LoadingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 83F1A7ED1841DADB000B363A /* LoadingScene.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
@@ -748,8 +746,8 @@
 		379BB99217F03F3700829B88 /* CCSGUIReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSGUIReader.h; sourceTree = "<group>"; };
 		379BB99317F03F3700829B88 /* CCSSceneReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSSceneReader.cpp; sourceTree = "<group>"; };
 		379BB99417F03F3700829B88 /* CCSSceneReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSSceneReader.h; sourceTree = "<group>"; };
-		8318C14018497F77005CF03A /* EmojiSpirit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmojiSpirit.cpp; path = ../Classes/EmojiSpirit.cpp; sourceTree = "<group>"; };
-		8318C14118497F77005CF03A /* EmojiSpirit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmojiSpirit.h; path = ../Classes/EmojiSpirit.h; sourceTree = "<group>"; };
+		8318C14018497F77005CF03A /* EmojiSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmojiSprite.cpp; path = ../Classes/EmojiSprite.cpp; sourceTree = "<group>"; };
+		8318C14118497F77005CF03A /* EmojiSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmojiSprite.h; path = ../Classes/EmojiSprite.h; sourceTree = "<group>"; };
 		831B3B981840E5C100A0B137 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		831B3B991840E5C100A0B137 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		831B3B9A1840E5C100A0B137 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
@@ -781,16 +779,12 @@
 		83582B3118424F4400150609 /* MainMenu_Background_Img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenu_Background_Img.png; sourceTree = "<group>"; };
 		83582B331842549C00150609 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		83582B341842549C00150609 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		8359ABEB183E5CEE00DBA41A /* GameController.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameController.cpp; path = ../Classes/GameController.cpp; sourceTree = "<group>"; };
-		8359ABEC183E5CEE00DBA41A /* GameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameController.h; path = ../Classes/GameController.h; sourceTree = "<group>"; };
 		8359ABF0183E651100DBA41A /* GameDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GameDelegate.cpp; path = ../Classes/GameDelegate.cpp; sourceTree = "<group>"; };
 		8359ABF1183E651100DBA41A /* GameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameDelegate.h; path = ../Classes/GameDelegate.h; sourceTree = "<group>"; };
 		837544BD18404FE000058EF3 /* MainMenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainMenuScene.cpp; path = ../Classes/MainMenuScene.cpp; sourceTree = "<group>"; };
 		837544BE18404FE000058EF3 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuScene.h; path = ../Classes/MainMenuScene.h; sourceTree = "<group>"; };
 		837544C01840568C00058EF3 /* MainMenu_BGM.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = MainMenu_BGM.mp3; sourceTree = "<group>"; };
 		83788F6F1842343800BA688E /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Marker Felt.ttf"; path = "fonts/Marker Felt.ttf"; sourceTree = "<group>"; };
-		838AFE821842429800556B7F /* VisibleRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VisibleRect.cpp; sourceTree = "<group>"; };
-		838AFE831842429800556B7F /* VisibleRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisibleRect.h; sourceTree = "<group>"; };
 		83F1A7ED1841DADB000B363A /* LoadingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LoadingScene.cpp; path = ../Classes/LoadingScene.cpp; sourceTree = "<group>"; };
 		83F1A7EE1841DADB000B363A /* LoadingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadingScene.h; path = ../Classes/LoadingScene.h; sourceTree = "<group>"; };
 		83F7F626184237A4000BAF6A /* AppMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppMacros.h; sourceTree = "<group>"; };
@@ -1320,13 +1314,9 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				838AFE821842429800556B7F /* VisibleRect.cpp */,
-				838AFE831842429800556B7F /* VisibleRect.h */,
 				83F7F626184237A4000BAF6A /* AppMacros.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
-				8359ABEB183E5CEE00DBA41A /* GameController.cpp */,
-				8359ABEC183E5CEE00DBA41A /* GameController.h */,
 				8359ABF0183E651100DBA41A /* GameDelegate.cpp */,
 				8359ABF1183E651100DBA41A /* GameDelegate.h */,
 				83F1A7ED1841DADB000B363A /* LoadingScene.cpp */,
@@ -1337,8 +1327,8 @@
 				831B3BCB1840F3D300A0B137 /* MainMenuView.h */,
 				833C70A518437BE300C1F2E9 /* GamePlayingScene.cpp */,
 				833C70A618437BE300C1F2E9 /* GamePlayingScene.h */,
-				8318C14018497F77005CF03A /* EmojiSpirit.cpp */,
-				8318C14118497F77005CF03A /* EmojiSpirit.h */,
+				8318C14018497F77005CF03A /* EmojiSprite.cpp */,
+				8318C14118497F77005CF03A /* EmojiSprite.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -2042,7 +2032,7 @@
 				15A3DA511682F826002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				15A3DA521682F826002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */,
-				8318C14218497F77005CF03A /* EmojiSpirit.cpp in Sources */,
+				8318C14218497F77005CF03A /* EmojiSprite.cpp in Sources */,
 				833C70A718437BE300C1F2E9 /* GamePlayingScene.cpp in Sources */,
 				15A3DA541682F826002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				15A3DA551682F826002FB0C5 /* CCEditBox.cpp in Sources */,
@@ -2069,7 +2059,6 @@
 				1A8F3B70175E05DA00049216 /* AnimationStateData.cpp in Sources */,
 				1A8F3B71175E05DA00049216 /* Atlas.cpp in Sources */,
 				1A8F3B72175E05DA00049216 /* AtlasAttachmentLoader.cpp in Sources */,
-				838AFE841842429800556B7F /* VisibleRect.cpp in Sources */,
 				1A8F3B73175E05DA00049216 /* Attachment.cpp in Sources */,
 				1A8F3B74175E05DA00049216 /* AttachmentLoader.cpp in Sources */,
 				1A8F3B75175E05DA00049216 /* Bone.cpp in Sources */,
@@ -2089,7 +2078,6 @@
 				1AB87035175E0A84005D39BF /* WebSocket.cpp in Sources */,
 				1A9CE8781765A12C000E3062 /* AssetsManager.cpp in Sources */,
 				379BB99517F03F3700829B88 /* CCActionFrame.cpp in Sources */,
-				8359ABED183E5CEE00DBA41A /* GameController.cpp in Sources */,
 				379BB99617F03F3700829B88 /* CCActionFrameEasing.cpp in Sources */,
 				379BB99717F03F3700829B88 /* CCActionManager.cpp in Sources */,
 				379BB99817F03F3700829B88 /* CCActionNode.cpp in Sources */,

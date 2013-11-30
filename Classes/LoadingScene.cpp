@@ -37,7 +37,7 @@ void LoadingScene::update(CCTime dt)
     switch (targetScene_) {
         case TargetSceneMainMenu:
             CCLog("Switch from loading scene to MainMenu Scene");
-            GameDelegate::sharedGameDelegate()->switchToMainMenuScene();
+            GameDelegate::sharedGameDelegate()->switchFromLoadingSceneToMainMenuScene();
             break;
         case TargetSceneStartGame:
             break;

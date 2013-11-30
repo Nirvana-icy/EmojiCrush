@@ -42,6 +42,7 @@ void GameDelegate::startGame()
     
     CCDirector::sharedDirector()->replaceScene( CCTransitionProgressRadialCW::create(0.8f, pGamePlayignScene) );
 }
+
 void GameDelegate::showMainMenu()
 {
     LoadingScene* pLoadingScene = new LoadingScene();
@@ -54,7 +55,7 @@ void GameDelegate::showMainMenu()
     CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(LoadingScene::update),pLoadingScene,1,false);
 }
 
-void GameDelegate::switchToMainMenuScene()
+void GameDelegate::switchFromLoadingSceneToMainMenuScene()
 {
     
     MainMenuScene *p_MainMenuScene = new MainMenuScene();
