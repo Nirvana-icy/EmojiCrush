@@ -17,10 +17,6 @@ MainMenuScene::MainMenuScene()
     
 }
 
-MainMenuScene::~MainMenuScene()
-{
-}
-
 void MainMenuScene::onEnter()
 {
     CCScene::onEnter();
@@ -64,4 +60,10 @@ bool MainMenuScene::init(bool bInitFromGame)
 void MainMenuScene::startGameCallback(CCObject *pSender)
 {
     GameDelegate::sharedGameDelegate()->startGame();
+}
+
+
+MainMenuScene::~MainMenuScene()
+{
+    
 }

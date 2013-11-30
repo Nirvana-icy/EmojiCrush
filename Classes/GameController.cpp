@@ -11,10 +11,7 @@
 
 GameController::GameController()
 {
-}
-
-GameController::~GameController()
-{
+    
 }
 
 bool GameController::init()
@@ -62,4 +59,10 @@ void GameController::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
      m_pItemMenu->setPosition(nextPos);
      m_tBeginPos = touchLocation;
      s_tCurPos   = nextPos;*/
+}
+
+
+GameController::~GameController()
+{
+    
 }

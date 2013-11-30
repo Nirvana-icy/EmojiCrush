@@ -19,10 +19,10 @@ class MainMenuScene : public cocos2d::CCScene
 {
 public:
     MainMenuScene();
-    virtual ~MainMenuScene();
+    ~MainMenuScene();
     
-    virtual void onEnter();
-    virtual void onExitTransitionDidStart();
+    void onEnter();
+    void onExitTransitionDidStart();
     bool    init(bool bInitFromGame = false);
     
     void    startGameCallback(CCObject * pSender);

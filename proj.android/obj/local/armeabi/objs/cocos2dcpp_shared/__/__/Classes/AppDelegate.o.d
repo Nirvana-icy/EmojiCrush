@@ -203,7 +203,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/AppDelegate.o: \
  /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/support/data_support/uthash.h \
  /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/support/component/CCComponent.h \
  /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/support/component/CCComponentContainer.h \
- jni/../../Classes/GameController.h jni/../../Classes/AppMacros.h
+ jni/../../Classes/GameController.h jni/../../Classes/AppMacros.h \
+ /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../CocosDenshion/android/../include/SimpleAudioEngine.h \
+ /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../CocosDenshion/android/../include/Export.h
 
 jni/../../Classes/AppDelegate.h:
 
@@ -616,3 +618,7 @@ jni/../../Classes/AppDelegate.h:
 jni/../../Classes/GameController.h:
 
 jni/../../Classes/AppMacros.h:
+
+/Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../CocosDenshion/android/../include/SimpleAudioEngine.h:
+
+/Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../CocosDenshion/android/../include/Export.h:

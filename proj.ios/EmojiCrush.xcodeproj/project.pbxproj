@@ -229,6 +229,7 @@
 		379BB9D217F03F3700829B88 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = 379BB98D17F03F3700829B88 /* sconscript */; };
 		379BB9D317F03F3700829B88 /* CCSGUIReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99117F03F3700829B88 /* CCSGUIReader.cpp */; };
 		379BB9D417F03F3700829B88 /* CCSSceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* CCSSceneReader.cpp */; };
+		8318C14218497F77005CF03A /* EmojiSpirit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8318C14018497F77005CF03A /* EmojiSpirit.cpp */; };
 		831B3B9F1840E5C100A0B137 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B981840E5C100A0B137 /* Icon-57.png */; };
 		831B3BA01840E5C100A0B137 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B991840E5C100A0B137 /* Icon-72.png */; };
 		831B3BA11840E5C100A0B137 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B9A1840E5C100A0B137 /* Icon-76.png */; };
@@ -250,8 +251,11 @@
 		831B3BC71840EB5500A0B137 /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3BC61840EB5500A0B137 /* Default-Portrait~ipad.png */; };
 		831B3BC91840EFDF00A0B137 /* Gaming_BGM.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 831B3BC81840EFDF00A0B137 /* Gaming_BGM.mp3 */; };
 		831B3BCC1840F3D300A0B137 /* MainMenuView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 831B3BCA1840F3D300A0B137 /* MainMenuView.cpp */; };
+		8324A06B184632DE007D4FF9 /* Emoji_Image.png in Resources */ = {isa = PBXBuildFile; fileRef = 8324A069184632DE007D4FF9 /* Emoji_Image.png */; };
+		8324A06C184632DE007D4FF9 /* Emoji_Image.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8324A06A184632DE007D4FF9 /* Emoji_Image.plist */; };
+		8324A06E184632F6007D4FF9 /* Tusiji.png in Resources */ = {isa = PBXBuildFile; fileRef = 8324A06D184632F6007D4FF9 /* Tusiji.png */; };
 		833C70A718437BE300C1F2E9 /* GamePlayingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 833C70A518437BE300C1F2E9 /* GamePlayingScene.cpp */; };
-		833C70A9184398EB00C1F2E9 /* Playing_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 833C70A8184398EB00C1F2E9 /* Playing_Background.png */; };
+		833C70AB1843A9BB00C1F2E9 /* Gaming_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 833C70AA1843A9BB00C1F2E9 /* Gaming_Background.png */; };
 		83582B3218424F4400150609 /* MainMenu_Background_Img.png in Resources */ = {isa = PBXBuildFile; fileRef = 83582B3118424F4400150609 /* MainMenu_Background_Img.png */; };
 		83582B351842549C00150609 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 83582B331842549C00150609 /* Default.png */; };
 		83582B361842549C00150609 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83582B341842549C00150609 /* Default@2x.png */; };
@@ -744,6 +748,8 @@
 		379BB99217F03F3700829B88 /* CCSGUIReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSGUIReader.h; sourceTree = "<group>"; };
 		379BB99317F03F3700829B88 /* CCSSceneReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCSSceneReader.cpp; sourceTree = "<group>"; };
 		379BB99417F03F3700829B88 /* CCSSceneReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCSSceneReader.h; sourceTree = "<group>"; };
+		8318C14018497F77005CF03A /* EmojiSpirit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = EmojiSpirit.cpp; path = ../Classes/EmojiSpirit.cpp; sourceTree = "<group>"; };
+		8318C14118497F77005CF03A /* EmojiSpirit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmojiSpirit.h; path = ../Classes/EmojiSpirit.h; sourceTree = "<group>"; };
 		831B3B981840E5C100A0B137 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		831B3B991840E5C100A0B137 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		831B3B9A1840E5C100A0B137 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
@@ -766,9 +772,12 @@
 		831B3BC81840EFDF00A0B137 /* Gaming_BGM.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gaming_BGM.mp3; sourceTree = "<group>"; };
 		831B3BCA1840F3D300A0B137 /* MainMenuView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MainMenuView.cpp; sourceTree = "<group>"; };
 		831B3BCB1840F3D300A0B137 /* MainMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuView.h; sourceTree = "<group>"; };
+		8324A069184632DE007D4FF9 /* Emoji_Image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Emoji_Image.png; sourceTree = "<group>"; };
+		8324A06A184632DE007D4FF9 /* Emoji_Image.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Emoji_Image.plist; sourceTree = "<group>"; };
+		8324A06D184632F6007D4FF9 /* Tusiji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tusiji.png; sourceTree = "<group>"; };
 		833C70A518437BE300C1F2E9 /* GamePlayingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GamePlayingScene.cpp; path = ../Classes/GamePlayingScene.cpp; sourceTree = "<group>"; };
 		833C70A618437BE300C1F2E9 /* GamePlayingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePlayingScene.h; path = ../Classes/GamePlayingScene.h; sourceTree = "<group>"; };
-		833C70A8184398EB00C1F2E9 /* Playing_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Playing_Background.png; sourceTree = "<group>"; };
+		833C70AA1843A9BB00C1F2E9 /* Gaming_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gaming_Background.png; sourceTree = "<group>"; };
 		83582B3118424F4400150609 /* MainMenu_Background_Img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenu_Background_Img.png; sourceTree = "<group>"; };
 		83582B331842549C00150609 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		83582B341842549C00150609 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -1328,6 +1337,8 @@
 				831B3BCB1840F3D300A0B137 /* MainMenuView.h */,
 				833C70A518437BE300C1F2E9 /* GamePlayingScene.cpp */,
 				833C70A618437BE300C1F2E9 /* GamePlayingScene.h */,
+				8318C14018497F77005CF03A /* EmojiSpirit.cpp */,
+				8318C14118497F77005CF03A /* EmojiSpirit.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -1772,18 +1783,21 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				83788F6F1842343800BA688E /* Marker Felt.ttf */,
-				837544C01840568C00058EF3 /* MainMenu_BGM.mp3 */,
-				831B3BC81840EFDF00A0B137 /* Gaming_BGM.mp3 */,
+				8324A069184632DE007D4FF9 /* Emoji_Image.png */,
+				8324A06A184632DE007D4FF9 /* Emoji_Image.plist */,
+				8324A06D184632F6007D4FF9 /* Tusiji.png */,
 				83582B331842549C00150609 /* Default.png */,
 				83582B341842549C00150609 /* Default@2x.png */,
 				831B3BB91840E9AC00A0B137 /* Default-568h@2x.png */,
 				831B3BC01840EAA100A0B137 /* Default~iPad.png */,
 				831B3BC21840EAE400A0B137 /* Default~iPad@2x.png */,
-				833C70A8184398EB00C1F2E9 /* Playing_Background.png */,
+				833C70AA1843A9BB00C1F2E9 /* Gaming_Background.png */,
 				83582B3118424F4400150609 /* MainMenu_Background_Img.png */,
 				831B3BC41840EB2F00A0B137 /* Default-Portrait@2x~ipad.png */,
 				831B3BC61840EB5500A0B137 /* Default-Portrait~ipad.png */,
+				83788F6F1842343800BA688E /* Marker Felt.ttf */,
+				837544C01840568C00058EF3 /* MainMenu_BGM.mp3 */,
+				831B3BC81840EFDF00A0B137 /* Gaming_BGM.mp3 */,
 				831B3BAC1840E68200A0B137 /* Icon-29.png */,
 				831B3BB61840E74000A0B137 /* Icon-40.png */,
 				831B3BB21840E70E00A0B137 /* Icon-50.png */,
@@ -1872,8 +1886,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				833C70A9184398EB00C1F2E9 /* Playing_Background.png in Resources */,
 				837544C11840568C00058EF3 /* MainMenu_BGM.mp3 in Resources */,
+				8324A06C184632DE007D4FF9 /* Emoji_Image.plist in Resources */,
 				831B3BA41840E5C100A0B137 /* Icon-112.png in Resources */,
 				831B3BA11840E5C100A0B137 /* Icon-76.png in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
@@ -1890,13 +1904,16 @@
 				831B3BB41840E70E00A0B137 /* Icon-50.png in Resources */,
 				831B3BC91840EFDF00A0B137 /* Gaming_BGM.mp3 in Resources */,
 				831B3BAB1840E65200A0B137 /* Icon-152.png in Resources */,
+				8324A06B184632DE007D4FF9 /* Emoji_Image.png in Resources */,
 				831B3B9F1840E5C100A0B137 /* Icon-57.png in Resources */,
 				831B3BA01840E5C100A0B137 /* Icon-72.png in Resources */,
+				833C70AB1843A9BB00C1F2E9 /* Gaming_Background.png in Resources */,
 				831B3BAF1840E69E00A0B137 /* Icon-58.png in Resources */,
 				379BB9D017F03F3700829B88 /* json_valueiterator.inl in Resources */,
 				831B3BC71840EB5500A0B137 /* Default-Portrait~ipad.png in Resources */,
 				831B3BA21840E5C100A0B137 /* Icon-120.png in Resources */,
 				831B3BB51840E70E00A0B137 /* Icon-80.png in Resources */,
+				8324A06E184632F6007D4FF9 /* Tusiji.png in Resources */,
 				831B3BA91840E63600A0B137 /* Icon-144.png in Resources */,
 				379BB9D217F03F3700829B88 /* sconscript in Resources */,
 				83582B361842549C00150609 /* Default@2x.png in Resources */,
@@ -2025,6 +2042,7 @@
 				15A3DA511682F826002FB0C5 /* CCControlSwitch.cpp in Sources */,
 				15A3DA521682F826002FB0C5 /* CCControlUtils.cpp in Sources */,
 				15A3DA531682F826002FB0C5 /* CCInvocation.cpp in Sources */,
+				8318C14218497F77005CF03A /* EmojiSpirit.cpp in Sources */,
 				833C70A718437BE300C1F2E9 /* GamePlayingScene.cpp in Sources */,
 				15A3DA541682F826002FB0C5 /* CCScale9Sprite.cpp in Sources */,
 				15A3DA551682F826002FB0C5 /* CCEditBox.cpp in Sources */,

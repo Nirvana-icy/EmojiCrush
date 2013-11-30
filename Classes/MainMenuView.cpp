@@ -15,13 +15,13 @@ bool MainMenuView::init(bool fromGame)
 
     m_pMainMenu = CCMenu::create();
 
-    CCString caption = "Start Game.";
+    CCString caption = "Start Game!";
     if (fromGame)
         caption = "Resume Game.";
 
-    CCLabelTTF* label = CCLabelTTF::create(caption.getCString(), "fonts/Marker Felt.ttf", 68);
-    m_pStartButton = CCMenuItemLabel::create(label);
-    m_pStartButton->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2) );
+    CCLabelTTF* pLabel = CCLabelTTF::create(caption.getCString(), "fonts/Marker Felt.ttf", 76);
+    m_pStartButton = CCMenuItemLabel::create(pLabel);
+    m_pStartButton->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height*1/2) );
 
     m_pMainMenu->setPosition(0.f, 0.f);
     m_pMainMenu->addChild(m_pStartButton);
@@ -40,4 +40,5 @@ CCMenuItemLabel* MainMenuView::getStartButton() const
 
 MainMenuView::~MainMenuView()
 {
+    
 }

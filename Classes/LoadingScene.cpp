@@ -11,10 +11,7 @@
 
 LoadingScene::LoadingScene()
 {
-}
-
-LoadingScene::~LoadingScene()
-{
+    
 }
 
 bool LoadingScene::initWithTargetScene(TargetScenes targetScene)
@@ -22,7 +19,8 @@ bool LoadingScene::initWithTargetScene(TargetScenes targetScene)
     if (CCScene::init()) {
         targetScene_ = targetScene;
         //Makeup the loading scene
-        CCLabelTTF *lable = CCLabelTTF::create("Loading...", "fonts/Marker Felt.ttf", 68);
+
+        CCLabelTTF *lable = CCLabelTTF::create("Loading...", "fonts/Marker Felt.ttf", 76);
         lable->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2));
         this->addChild(lable);
         
@@ -50,4 +48,10 @@ void LoadingScene::update(CCTime dt)
             CCLog("Unsupport TargetScene Enum ID:%i", targetScene_);
             break;
     }
+}
+
+
+LoadingScene::~LoadingScene()
+{
+    
 }

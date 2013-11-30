@@ -20,11 +20,11 @@ public:
     GameController();
     ~GameController();
     
-    virtual bool init();
-    virtual void showMainMenu();
+    bool init();
+    void showMainMenu();
     
-    virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
-    virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
+    void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+    void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
 
     
 private:

@@ -30,7 +30,7 @@ public:
     ~LoadingScene();
     
     bool initWithTargetScene(TargetScenes targetScene);
-    virtual void update(CCTime dt);
+    void update(CCTime dt);
     
 protected:
     

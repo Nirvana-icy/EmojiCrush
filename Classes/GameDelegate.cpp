@@ -18,11 +18,6 @@ GameDelegate::GameDelegate()
     
 }
 
-GameDelegate::~GameDelegate()
-{
-    
-}
-
 GameDelegate* GameDelegate::sharedGameDelegate()
 {
     if ( !s_SharedGameDelegate )
@@ -45,7 +40,7 @@ void GameDelegate::startGame()
     pGamePlayignScene->autorelease();
     pGamePlayignScene->init();
     
-    CCDirector::sharedDirector()->replaceScene( CCTransitionFadeTR::create(0.8f, pGamePlayignScene) );
+    CCDirector::sharedDirector()->replaceScene( CCTransitionProgressRadialCW::create(0.8f, pGamePlayignScene) );
 }
 void GameDelegate::showMainMenu()
 {
@@ -81,4 +76,9 @@ void GameDelegate::returnToMainMenu()
 void GameDelegate::returnToGame()
 {
 //    CCDirector::sharedDirector()->popScene();
+}
+
+GameDelegate::~GameDelegate()
+{
+    
 }
