@@ -11,6 +11,7 @@
 EmojiSprite::EmojiSprite()
 {
     m_slideDownCounter = 0;
+    m_EmojiType = invalid_Type;
 }
 
 EmojiSprite* EmojiSprite::createEmojiWithType(int emojiType)
@@ -47,33 +48,42 @@ bool EmojiSprite::initSpriteWithType(int emojiType)
             //init the basic Sprite from texture packer image file
             case Sprite_Tutu:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Tutu.png");
+                m_EmojiType = Sprite_Tutu;
                 break;
             case Sprite_Deyi:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Deyi.png");
+                m_EmojiType = Sprite_Deyi;
                 break;
             case Sprite_What:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("What.png");
+                m_EmojiType = Sprite_What;
                 break;
             case Sprite_Zuohengheng:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Zuohengheng.png");
+                m_EmojiType = Sprite_Zuohengheng;
                 break;
             case Sprite_Se:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Se.png");
+                m_EmojiType = Sprite_Se;
                 break;
             case Sprite_Happy:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Happy.png");
+                m_EmojiType = Sprite_Happy;
                 break;
             //init the special Sprite from texture packer image file
             case Sprite_Gift:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Gift.png");
+                m_EmojiType = Sprite_Gift;
                 break;
             case Sprite_Xmas_Tree:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Xmas_Tree.png");
+                m_EmojiType = Sprite_Xmas_Tree;
                 break;
             //init the special Tusiji Sprite from seperate png file
             case Sprite_Tusiji:
                 m_pEmojiSprite = CCSprite::create();
                 m_pEmojiSprite->initWithFile("Tusiji.png");
+                m_EmojiType = Sprite_Tusiji;
                 break;
             default:
                 CCLog("EmojiSprite::initSpriteWithType initWith one unknow Type:%i", emojiType);
@@ -94,10 +104,7 @@ bool EmojiSprite::initSpriteWithRandom()
     if(CCNode::init())
     {
         //init the Sprite with random
-        float f_Random = CCRANDOM_0_1()*6;
-        if (6.0f == f_Random) {
-            f_Random = 5.0;
-        }
+        float f_Random = CCRANDOM_0_1()*6; // if f_Random == 6 -> init one Santa Emoji
         this->initSpriteWithType((int)f_Random);
     }
     else
@@ -105,21 +112,6 @@ bool EmojiSprite::initSpriteWithRandom()
         bRet = false;
     }
     return bRet;
-}
-
-CCSprite* EmojiSprite::getEmojiSprite()
-{
-    return m_pEmojiSprite;
-}
-
-void EmojiSprite::setSlideDownConter(int conter)
-{
-    m_slideDownCounter = conter;
-}
-
-int EmojiSprite::getSlideDownConter()
-{
-    return m_slideDownCounter;
 }
 
 EmojiSprite::~EmojiSprite()

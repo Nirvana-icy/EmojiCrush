@@ -24,11 +24,12 @@ typedef enum
     Sprite_Se,
     Sprite_Happy,
     //Special Sprite
+    Sprite_Santa, // = 6
     Sprite_Gift,
     Sprite_Xmas_Tree,
-    Sprite_Santa0,
     //Special Sprite Tusiji whose image if from seperate png file
     Sprite_Tusiji,
+    invalid_Type, // = 10
 } EmojiType;
 
 class EmojiSprite: public CCNode
@@ -44,13 +45,13 @@ public:
     bool initSpriteWithRandom();
     
     void setSlideDownConter(int conter);
-    int getSlideDownConter();
-    CCSprite* getEmojiSprite();
+    
+    CCSprite *m_pEmojiSprite;
+    int m_slideDownCounter;
+    EmojiType m_EmojiType;
     
 protected:
 private:
-    int m_slideDownCounter;
-    CCSprite *m_pEmojiSprite;
 };
 
 #endif /* defined(__EmojiCrush__EmojiSprite__) */

@@ -28,6 +28,11 @@
 #define DESIGN_RESOLUTION_2048X1536  2
 
 #define RESOURCE_IMG_WIDTH 320
+#define EMOJI_IMAGE_WIDTH 32
+
+#define BLOCKS_IN_ROW 8
+#define BLOCKS_IN_COLUMN 8
+
 /* If you want to switch design resolution, change next line */
 #define TARGET_DESIGN_RESOLUTION_SIZE  DESIGN_RESOLUTION_480X320
 
