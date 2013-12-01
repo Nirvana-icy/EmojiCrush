@@ -25,13 +25,16 @@ public:
     ~GamePlayingLayer();
     
     bool initTheGame();
-    
     void resetMatchMarkArray();
+    CCPoint getBlock_ij_AnchorPosition(int i,int j);
     
 protected:
 private:
-    EmojiSprite* m_EmojiBlocks[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN] = {NULL};
-    bool m_matchMark[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN] = {false};
+    EmojiSprite* m_EmojiBlocks[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN];
+    bool m_matchMark[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN];
+    float m_fScale;
+    float m_fCenter_X;
+    float m_fCenter_Y;
 };
 
 #endif /* defined(__EmojiCrush__GamePlayingLayer__) */

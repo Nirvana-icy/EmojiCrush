@@ -41,7 +41,7 @@ static Resource smallResource  =  { cocos2d::CCSizeMake(960, 640),   "iphone" };
 static Resource mediumResource =  { cocos2d::CCSizeMake(1024, 768),  "ipad"   };
 static Resource largeResource  =  { cocos2d::CCSizeMake(2048, 1536), "ipadhd" };
 
-#if (TARGET_DESIGN_RESOLUTION_SIZE == DESIGN_RESOLUTION_480X320)
+#if (TARGET_DESIGN_RESOLUTION_SIZE == DESIGN_RESOLUTION_960X4640)
 static cocos2d::CCSize designResolutionSize = cocos2d::CCSizeMake(960, 640);
 #elif (TARGET_DESIGN_RESOLUTION_SIZE == DESIGN_RESOLUTION_1024X768)
 static cocos2d::CCSize designResolutionSize = cocos2d::CCSizeMake(1024, 768);

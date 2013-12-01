@@ -203,7 +203,6 @@ obj/local/armeabi/objs/cocos2dcpp_shared/hellocpp/main.o: \
  /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/support/data_support/uthash.h \
  /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/support/component/CCComponent.h \
  /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/support/component/CCComponentContainer.h \
- jni/../../Classes/GameController.h \
  /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/include/CCEventType.h \
  /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/platform/android/jni/JniHelper.h \
  /Users/bijinglong/Dev/Android/android-ndk-r9b/platforms/android-19/arch-arm/usr/include/jni.h
@@ -615,8 +614,6 @@ jni/../../Classes/AppDelegate.h:
 /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/support/component/CCComponent.h:
 
 /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/support/component/CCComponentContainer.h:
-
-jni/../../Classes/GameController.h:
 
 /Users/bijinglong/Dev/cocos2d-x-2.2/projects/EmojiCrush/proj.android/../../../cocos2dx/include/CCEventType.h:
 

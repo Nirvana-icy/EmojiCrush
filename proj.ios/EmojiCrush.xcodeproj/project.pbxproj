@@ -231,6 +231,7 @@
 		379BB9D417F03F3700829B88 /* CCSSceneReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 379BB99317F03F3700829B88 /* CCSSceneReader.cpp */; };
 		8318C14218497F77005CF03A /* EmojiSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8318C14018497F77005CF03A /* EmojiSprite.cpp */; };
 		8318C1461849D0BF005CF03A /* GamePlayingLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8318C1441849D0BF005CF03A /* GamePlayingLayer.cpp */; };
+		8318C14C184A4448005CF03A /* Gaming_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 8318C14B184A4448005CF03A /* Gaming_Background.png */; };
 		831B3B9F1840E5C100A0B137 /* Icon-57.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B981840E5C100A0B137 /* Icon-57.png */; };
 		831B3BA01840E5C100A0B137 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B991840E5C100A0B137 /* Icon-72.png */; };
 		831B3BA11840E5C100A0B137 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = 831B3B9A1840E5C100A0B137 /* Icon-76.png */; };
@@ -256,7 +257,6 @@
 		8324A06C184632DE007D4FF9 /* Emoji_Image.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8324A06A184632DE007D4FF9 /* Emoji_Image.plist */; };
 		8324A06E184632F6007D4FF9 /* Tusiji.png in Resources */ = {isa = PBXBuildFile; fileRef = 8324A06D184632F6007D4FF9 /* Tusiji.png */; };
 		833C70A718437BE300C1F2E9 /* GamePlayingScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 833C70A518437BE300C1F2E9 /* GamePlayingScene.cpp */; };
-		833C70AB1843A9BB00C1F2E9 /* Gaming_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 833C70AA1843A9BB00C1F2E9 /* Gaming_Background.png */; };
 		83582B3218424F4400150609 /* MainMenu_Background_Img.png in Resources */ = {isa = PBXBuildFile; fileRef = 83582B3118424F4400150609 /* MainMenu_Background_Img.png */; };
 		83582B351842549C00150609 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 83582B331842549C00150609 /* Default.png */; };
 		83582B361842549C00150609 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83582B341842549C00150609 /* Default@2x.png */; };
@@ -751,6 +751,7 @@
 		8318C14118497F77005CF03A /* EmojiSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EmojiSprite.h; path = ../Classes/EmojiSprite.h; sourceTree = "<group>"; };
 		8318C1441849D0BF005CF03A /* GamePlayingLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GamePlayingLayer.cpp; path = ../Classes/GamePlayingLayer.cpp; sourceTree = "<group>"; };
 		8318C1451849D0BF005CF03A /* GamePlayingLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePlayingLayer.h; path = ../Classes/GamePlayingLayer.h; sourceTree = "<group>"; };
+		8318C14B184A4448005CF03A /* Gaming_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gaming_Background.png; sourceTree = "<group>"; };
 		831B3B981840E5C100A0B137 /* Icon-57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-57.png"; sourceTree = "<group>"; };
 		831B3B991840E5C100A0B137 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
 		831B3B9A1840E5C100A0B137 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-76.png"; sourceTree = "<group>"; };
@@ -778,7 +779,6 @@
 		8324A06D184632F6007D4FF9 /* Tusiji.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Tusiji.png; sourceTree = "<group>"; };
 		833C70A518437BE300C1F2E9 /* GamePlayingScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GamePlayingScene.cpp; path = ../Classes/GamePlayingScene.cpp; sourceTree = "<group>"; };
 		833C70A618437BE300C1F2E9 /* GamePlayingScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GamePlayingScene.h; path = ../Classes/GamePlayingScene.h; sourceTree = "<group>"; };
-		833C70AA1843A9BB00C1F2E9 /* Gaming_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Gaming_Background.png; sourceTree = "<group>"; };
 		83582B3118424F4400150609 /* MainMenu_Background_Img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenu_Background_Img.png; sourceTree = "<group>"; };
 		83582B331842549C00150609 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		83582B341842549C00150609 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
@@ -1786,7 +1786,7 @@
 				831B3BB91840E9AC00A0B137 /* Default-568h@2x.png */,
 				831B3BC01840EAA100A0B137 /* Default~iPad.png */,
 				831B3BC21840EAE400A0B137 /* Default~iPad@2x.png */,
-				833C70AA1843A9BB00C1F2E9 /* Gaming_Background.png */,
+				8318C14B184A4448005CF03A /* Gaming_Background.png */,
 				83582B3118424F4400150609 /* MainMenu_Background_Img.png */,
 				831B3BC41840EB2F00A0B137 /* Default-Portrait@2x~ipad.png */,
 				831B3BC61840EB5500A0B137 /* Default-Portrait~ipad.png */,
@@ -1885,6 +1885,7 @@
 				8324A06C184632DE007D4FF9 /* Emoji_Image.plist in Resources */,
 				831B3BA41840E5C100A0B137 /* Icon-112.png in Resources */,
 				831B3BA11840E5C100A0B137 /* Icon-76.png in Resources */,
+				8318C14C184A4448005CF03A /* Gaming_Background.png in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
 				831B3BBC1840E9AC00A0B137 /* Default-568h@2x.png in Resources */,
 				831B3BA71840E60300A0B137 /* Icon-114.png in Resources */,
@@ -1902,7 +1903,6 @@
 				8324A06B184632DE007D4FF9 /* Emoji_Image.png in Resources */,
 				831B3B9F1840E5C100A0B137 /* Icon-57.png in Resources */,
 				831B3BA01840E5C100A0B137 /* Icon-72.png in Resources */,
-				833C70AB1843A9BB00C1F2E9 /* Gaming_Background.png in Resources */,
 				831B3BAF1840E69E00A0B137 /* Icon-58.png in Resources */,
 				379BB9D017F03F3700829B88 /* json_valueiterator.inl in Resources */,
 				831B3BC71840EB5500A0B137 /* Default-Portrait~ipad.png in Resources */,
