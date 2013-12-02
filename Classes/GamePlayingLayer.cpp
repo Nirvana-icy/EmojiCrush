@@ -77,26 +77,26 @@ bool GamePlayingLayer::checkMatch(int i, int j)
     int matchsInRow = 0;
     int matchsInColumn = 0;
     //Check matchs in row
-    for (int delta = 0; j + delta < BLOCKS_IN_ROW; ++delta) {
+    for (int delta = 1; j + delta < BLOCKS_IN_ROW; delta++) {
         if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
             matchsInRow++;
         else
             break;
     }
-    for (int delta = 0; j + delta > 0; --delta) {
+    for (int delta = -1; j + delta > 0; delta--) {
         if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
             matchsInRow++;
         else
             break;
     }
     //Check matchs in column
-    for (int delta = 0; i + delta < BLOCKS_IN_COLUMN; ++delta) {
+    for (int delta = 1; i + delta < BLOCKS_IN_COLUMN; delta++) {
         if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
             matchsInColumn++;
         else
             break;
     }
-    for (int delta = 0; i + delta > 0; --delta) {
+    for (int delta = -1; i + delta > 0; delta--) {
         if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
             matchsInColumn++;
         else
@@ -108,7 +108,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
         //matchs happen in row
         if (matchsInRow - matchsInColumn > 0) {
             //mark match block in row
-            for (int delta = 0; j + delta < BLOCKS_IN_ROW; ++delta) {
+            for (int delta = 1; j + delta < BLOCKS_IN_ROW; delta++) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -117,7 +117,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-            for (int delta = 0; j + delta > 0; --delta) {
+            for (int delta = -1; j + delta > 0; --delta) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -131,15 +131,16 @@ bool GamePlayingLayer::checkMatch(int i, int j)
         //matchs happen in row and column L or T 5 matchs
         if (matchsInRow - matchsInColumn == 0) {
             //Mark match block in row
-            for (int delta = 0; j + delta < BLOCKS_IN_ROW; ++delta) {
+            for (int delta = 1; j + delta < BLOCKS_IN_ROW; delta++) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i][j+delta] = true;
-                }                else
+                }
+                else
                     break;
             }
-            for (int delta = 0; j + delta > 0; --delta) {
+            for (int delta = -1; j + delta > 0; delta--) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -149,7 +150,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                     break;
             }
             //Mark match block in coloumn
-            for (int delta = 0; i + delta < BLOCKS_IN_COLUMN; ++delta) {
+            for (int delta = 1; i + delta < BLOCKS_IN_COLUMN; delta++) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -158,7 +159,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-            for (int delta = 0; i + delta > 0; --delta) {
+            for (int delta = -1; i + delta > 0; delta--) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -172,7 +173,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
         else
         {
             //Mark match block in coloumn
-            for (int delta = 0; i + delta < BLOCKS_IN_COLUMN; ++delta) {
+            for (int delta = 1; i + delta < BLOCKS_IN_COLUMN; delta++) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -181,7 +182,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-            for (int delta = 0; i + delta > 0; --delta) {
+            for (int delta = -1; i + delta > 0; delta--) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -190,9 +191,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-
         }
-
     }
     return bRet;
 }
