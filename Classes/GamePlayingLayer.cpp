@@ -45,7 +45,7 @@ bool GamePlayingLayer::initTheGame()
                 m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();
             }
         }
-        //if the first row contain Santa -> Switch the Santa Sprite block with the block which upside Santa  
+        //if the first row contain Santa -> Switch the Santa Sprite block with the block which upside Santa 
         for (int j = 0; j < BLOCKS_IN_ROW; j++) {
             if (Sprite_Santa == m_EmojiBlocks[0][j]->m_EmojiType) {
                 EmojiSprite *temp_pEmojiSprite = m_EmojiBlocks[1][j];
