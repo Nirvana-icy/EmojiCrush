@@ -66,6 +66,7 @@ bool GamePlayingLayer::initTheGame()
                     }
                 }
             }
+            resetMatchMarkArray();
         }while(bMatch);
         //Till now all the sprites have been generated.Let's set the position of each sprite and add them to the layer
         for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
