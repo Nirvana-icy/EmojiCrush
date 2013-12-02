@@ -31,6 +31,7 @@ public:
     //Touch Event Processing Method
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
     //Scheduler Update Method
     void clearMatchsEmoji();
 protected:

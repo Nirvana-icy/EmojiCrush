@@ -12,14 +12,6 @@ GamePlayingLayer::GamePlayingLayer()
 {
     //Loading the Texture Packer image file
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("Emoji_Image.plist");
-    //成员变量赋值
-    m_fEmojiBlockCenter_X = CCDirector::sharedDirector()->getWinSize().width*0.5;
-    m_fEmojiBlockCenter_Y = CCDirector::sharedDirector()->getWinSize().height*0.45;
-    m_fEmojiWidth = EMOJI_IMAGE_WIDTH*(designResolutionSize.width/RESOURCE_IMG_WIDTH);
-    m_beginBlockI = BLOCKS_IN_ROW;  //Set default value to this out of array boundry value to indicate invalid
-    m_beginBlockI = BLOCKS_IN_COLUMN;
-    //init m_matchMark[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN] with the value false
-    resetMatchMarkArray();
 }
 
 GamePlayingLayer::~GamePlayingLayer()
@@ -30,6 +22,14 @@ GamePlayingLayer::~GamePlayingLayer()
 bool GamePlayingLayer::init()
 {
     bool bRet = true;
+    //成员变量赋值
+    m_fEmojiBlockCenter_X = CCDirector::sharedDirector()->getWinSize().width*0.5;
+    m_fEmojiBlockCenter_Y = CCDirector::sharedDirector()->getWinSize().height*0.45;
+    m_fEmojiWidth = EMOJI_IMAGE_WIDTH*(designResolutionSize.width/RESOURCE_IMG_WIDTH);
+    m_beginBlockI = BLOCKS_IN_ROW;  //Set default value to this out of array boundry value to indicate invalid
+    m_beginBlockI = BLOCKS_IN_COLUMN;
+    //init m_matchMark[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN] with the value false
+    resetMatchMarkArray();
     //Set GamePlayingLayer touchable
     CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     return bRet;
@@ -236,10 +236,12 @@ void GamePlayingLayer::clearMatchsEmoji(){
             {
                 m_EmojiBlocks[i][j]->m_pEmojiSprite = NULL;
                 m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithType(Sprite_Santa);
-                m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
-                CCLog("clearMatchs: i:%d,j:%d", i,j);
-                //添加每一个 Emoji 到GamePlayingLayer
-                addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
+                if (m_EmojiBlocks[i][j]) {
+                    m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
+                    CCLog("clearMatchs: i:%d,j:%d", i,j);
+                    //添加每一个 Emoji 到GamePlayingLayer
+                    addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
+                }
             }
         }
     }
@@ -310,8 +312,10 @@ void GamePlayingLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
                     for (int j = 0; j< BLOCKS_IN_ROW; j++) {
                         //设置每个block Emoji 的位置
                         CCLog("ccTouchEnded() : i:%d,j:%d", i,j);
-                        m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
-                        m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccWHITE);
+                        if (m_EmojiBlocks[i][j]) {
+                            m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
+                            m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccWHITE);
+                        }
                     }
                 }
                 //将Matchs的Emoji背景设置为黄色
@@ -339,4 +343,7 @@ void GamePlayingLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
     }
 }
 
-
+void GamePlayingLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
+{
+    //ccTouchEnded(pTouch, pEvent);
+}
