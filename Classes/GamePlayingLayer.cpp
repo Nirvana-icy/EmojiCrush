@@ -138,7 +138,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-            
+
         }
         //matchs happen in row and column L or T 5 matchs
         if (matchsInRow - matchsInColumn == 0) {
