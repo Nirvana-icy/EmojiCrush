@@ -29,7 +29,7 @@ bool GamePlayingLayer::init()
 {
     bool bRet = true;
     //Set GamePlayingLayer touchable
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 1, true);
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     return bRet;
 }
 
@@ -49,6 +49,12 @@ bool GamePlayingLayer::initTheGame()
                 addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
             }
         }
+        //if the first row contain Santa -> change santa to Sprite_Zuohengheng
+        for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+            if (Sprite_Santa == m_EmojiBlocks[0][j]->m_EmojiType) {
+                m_EmojiBlocks[0][j] = EmojiSprite::createEmojiWithType(Sprite_Zuohengheng);
+            }
+        }
         //Check Match after random init..If match happens => Recreate the emoji till none matchs happen..
         bool bMatch = false;
         do{
@@ -63,18 +69,6 @@ bool GamePlayingLayer::initTheGame()
                 }
             }
         }while(bMatch);
-        // if (bMatch) {
-        //     //delete the Match Emoji and Generate the new Emoji
-        //     for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
-        //         for (int j = 0; j < BLOCKS_IN_ROW; j++) {
-        //             if(m_matchMark[i][j]) {
-        //                 m_EmojiBlocks[i][j] = NULL;
-        //             }
-        //         }
-        //     }
-        // }
-        //if the first row contain Santa -> Get the point and move down the Santa
-        //Then generate the new Emoji
     }
     else
         bRet = false;
