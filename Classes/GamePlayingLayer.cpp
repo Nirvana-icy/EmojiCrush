@@ -29,7 +29,7 @@ bool GamePlayingLayer::init()
 {
     bool bRet = true;
     //Set GamePlayingLayer touchable
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 1, true);
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     return bRet;
 }
 
@@ -43,28 +43,40 @@ bool GamePlayingLayer::initTheGame()
         for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
             for (int j = 0; j < BLOCKS_IN_ROW; j++) {
                 m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();
+            }
+        }
+        //if the first row contain Santa -> Switch the Santa Sprite block with the block which upside Santa
+        for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+            if (Sprite_Santa == m_EmojiBlocks[0][j]->m_EmojiType) {
+                EmojiSprite *temp_pEmojiSprite = m_EmojiBlocks[1][j];
+                m_EmojiBlocks[1][j] = m_EmojiBlocks[0][j];
+                m_EmojiBlocks[0][j] = temp_pEmojiSprite;
+            }
+        }
+        //Check Match after random init..If match happens => Recreate the emoji till none matchs happen..
+        bool bMatch = false;
+        do{
+            bMatch = false;
+            for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+                for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+                    //bMatch = bMatch || checkMatch(i, j);
+                    if(checkMatch(i, j)){
+                        m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();
+                        bMatch = true;
+                    }
+                }
+            }
+            resetMatchMarkArray();
+        }while(bMatch);
+        //Till now all the sprites have been generated.Let's set the position of each sprite and add them to the layer
+        for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+            for (int j = 0; j< BLOCKS_IN_ROW; j++) {
                 //设置每个block Emoji 的位置
                 m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
                 //添加每一个 Emoji 到GamePlayingLayer
                 addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
             }
         }
-        //Check Match after random init..
-        bool bMatch = false;
-        for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
-            for (int j = 0; j < BLOCKS_IN_ROW; j++) {
-                bMatch = bMatch || checkMatch(i, j);
-                if(checkMatch(i, j))
-                {
-                    CCLog("Match happen in x:%d, y:%d", i,j);
-                }
-            }
-        }
-        if (bMatch) {
-            //delete the Match Emoji and Generate the new Emoji
-        }
-        //if the first row contain Santa -> Get the point and move down the Santa
-        //Then generate the new Emoji
     }
     else
         bRet = false;
@@ -77,26 +89,26 @@ bool GamePlayingLayer::checkMatch(int i, int j)
     int matchsInRow = 0;
     int matchsInColumn = 0;
     //Check matchs in row
-    for (int delta = 0; j + delta < BLOCKS_IN_ROW; ++delta) {
+    for (int delta = 1; j + delta < BLOCKS_IN_ROW; delta++) {
         if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
             matchsInRow++;
         else
             break;
     }
-    for (int delta = 0; j + delta > 0; --delta) {
+    for (int delta = -1; j + delta > 0; delta--) {
         if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
             matchsInRow++;
         else
             break;
     }
     //Check matchs in column
-    for (int delta = 0; i + delta < BLOCKS_IN_COLUMN; ++delta) {
+    for (int delta = 1; i + delta < BLOCKS_IN_COLUMN; delta++) {
         if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
             matchsInColumn++;
         else
             break;
     }
-    for (int delta = 0; i + delta > 0; --delta) {
+    for (int delta = -1; i + delta > 0; delta--) {
         if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
             matchsInColumn++;
         else
@@ -108,7 +120,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
         //matchs happen in row
         if (matchsInRow - matchsInColumn > 0) {
             //mark match block in row
-            for (int delta = 0; j + delta < BLOCKS_IN_ROW; ++delta) {
+            for (int delta = 1; j + delta < BLOCKS_IN_ROW; delta++) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -117,7 +129,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-            for (int delta = 0; j + delta > 0; --delta) {
+            for (int delta = -1; j + delta > 0; --delta) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -126,20 +138,21 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-
+            
         }
         //matchs happen in row and column L or T 5 matchs
         if (matchsInRow - matchsInColumn == 0) {
             //Mark match block in row
-            for (int delta = 0; j + delta < BLOCKS_IN_ROW; ++delta) {
+            for (int delta = 1; j + delta < BLOCKS_IN_ROW; delta++) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i][j+delta] = true;
-                }                else
+                }
+                else
                     break;
             }
-            for (int delta = 0; j + delta > 0; --delta) {
+            for (int delta = -1; j + delta > 0; delta--) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i][j+delta]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -149,7 +162,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                     break;
             }
             //Mark match block in coloumn
-            for (int delta = 0; i + delta < BLOCKS_IN_COLUMN; ++delta) {
+            for (int delta = 1; i + delta < BLOCKS_IN_COLUMN; delta++) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -158,7 +171,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-            for (int delta = 0; i + delta > 0; --delta) {
+            for (int delta = -1; i + delta > 0; delta--) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -172,7 +185,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
         else
         {
             //Mark match block in coloumn
-            for (int delta = 0; i + delta < BLOCKS_IN_COLUMN; ++delta) {
+            for (int delta = 1; i + delta < BLOCKS_IN_COLUMN; delta++) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -181,7 +194,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-            for (int delta = 0; i + delta > 0; --delta) {
+            for (int delta = -1; i + delta > 0; delta--) {
                 if(m_EmojiBlocks[i][j]->m_EmojiType == m_EmojiBlocks[i+delta][j]->m_EmojiType)
                 {
                     m_matchMark[i][j] = true;
@@ -190,9 +203,7 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 else
                     break;
             }
-
         }
-
     }
     return bRet;
 }
