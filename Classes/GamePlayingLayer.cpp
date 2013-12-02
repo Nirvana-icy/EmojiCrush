@@ -43,10 +43,6 @@ bool GamePlayingLayer::initTheGame()
         for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
             for (int j = 0; j < BLOCKS_IN_ROW; j++) {
                 m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();
-                //设置每个block Emoji 的位置
-                m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
-                //添加每一个 Emoji 到GamePlayingLayer
-                addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
             }
         }
         //if the first row contain Santa -> Switch the Santa Sprite block with the block which upside Santa  
@@ -71,6 +67,15 @@ bool GamePlayingLayer::initTheGame()
                 }
             }
         }while(bMatch);
+        //Till now all the sprites have been generated.Let's set the position of each sprite and add them to the layer
+        for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+            for (int j = 0; j< BLOCKS_IN_ROW; j++) {
+                //设置每个block Emoji 的位置
+                m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
+                //添加每一个 Emoji 到GamePlayingLayer
+                addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
+            }
+        }
     }
     else
         bRet = false;
