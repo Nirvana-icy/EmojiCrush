@@ -30,9 +30,9 @@ public:
     CCPoint getBlock_ij_AnchorPosition(int i,int j);
     //Touch Event Processing Method
     virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
-    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
     virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
-    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
+    //Scheduler Update Method
+    void clearMatchsEmoji();
 protected:
 private:
     float m_fEmojiWidth; //适配不同屏幕分辨率后Emoji的宽度
@@ -42,6 +42,8 @@ private:
     //Emoji Block Array & matchMark Array
     EmojiSprite* m_EmojiBlocks[BLOCKS_IN_COLUMN][BLOCKS_IN_ROW];
     bool m_matchMark[BLOCKS_IN_COLUMN][BLOCKS_IN_ROW];
+    int m_beginBlockI;
+    int m_beginBlockJ;
 };
 
 #endif /* defined(__EmojiCrush__GamePlayingLayer__) */

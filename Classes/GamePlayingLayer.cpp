@@ -16,6 +16,8 @@ GamePlayingLayer::GamePlayingLayer()
     m_fEmojiBlockCenter_X = CCDirector::sharedDirector()->getWinSize().width*0.5;
     m_fEmojiBlockCenter_Y = CCDirector::sharedDirector()->getWinSize().height*0.45;
     m_fEmojiWidth = EMOJI_IMAGE_WIDTH*(designResolutionSize.width/RESOURCE_IMG_WIDTH);
+    m_beginBlockI = BLOCKS_IN_ROW;  //Set default value to this out of array boundry value to indicate invalid
+    m_beginBlockI = BLOCKS_IN_COLUMN;
     //init m_matchMark[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN] with the value false
     resetMatchMarkArray();
 }
@@ -73,6 +75,7 @@ bool GamePlayingLayer::initTheGame()
             for (int j = 0; j< BLOCKS_IN_ROW; j++) {
                 //设置每个block Emoji 的位置
                 m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
+                m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccWHITE);
                 //添加每一个 Emoji 到GamePlayingLayer
                 addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
             }
@@ -125,6 +128,8 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i][j+delta] = true;
+                    m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                    m_EmojiBlocks[i][j+delta]->m_pEmojiSprite->setColor(ccYELLOW);
                 }
                 else
                     break;
@@ -134,6 +139,8 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i][j+delta] = true;
+                    m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                    m_EmojiBlocks[i][j+delta]->m_pEmojiSprite->setColor(ccYELLOW);
                 }
                 else
                     break;
@@ -148,6 +155,8 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i][j+delta] = true;
+                    m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                    m_EmojiBlocks[i][j+delta]->m_pEmojiSprite->setColor(ccYELLOW);
                 }
                 else
                     break;
@@ -157,6 +166,8 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i][j+delta] = true;
+                    m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                    m_EmojiBlocks[i][j+delta]->m_pEmojiSprite->setColor(ccYELLOW);
                 }
                 else
                     break;
@@ -167,6 +178,8 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i+delta][j] = true;
+                    m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                    m_EmojiBlocks[i+delta][j]->m_pEmojiSprite->setColor(ccYELLOW);
                 }
                 else
                     break;
@@ -176,6 +189,9 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i+delta][j] = true;
+                    m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                    m_EmojiBlocks[i+delta][j]->m_pEmojiSprite->setColor(ccYELLOW);
+
                 }
                 else
                     break;
@@ -190,6 +206,8 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i+delta][j] = true;
+                    m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                    m_EmojiBlocks[i+delta][j]->m_pEmojiSprite->setColor(ccYELLOW);
                 }
                 else
                     break;
@@ -199,6 +217,8 @@ bool GamePlayingLayer::checkMatch(int i, int j)
                 {
                     m_matchMark[i][j] = true;
                     m_matchMark[i+delta][j] = true;
+                    m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                    m_EmojiBlocks[i+delta][j]->m_pEmojiSprite->setColor(ccYELLOW);
                 }
                 else
                     break;
@@ -206,6 +226,25 @@ bool GamePlayingLayer::checkMatch(int i, int j)
         }
     }
     return bRet;
+}
+
+void GamePlayingLayer::clearMatchsEmoji(){
+    this->unscheduleAllSelectors();
+    for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+        for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+            if(m_matchMark[i][j])
+            {
+                m_EmojiBlocks[i][j]->m_pEmojiSprite = NULL;
+                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithType(Sprite_Santa);
+                m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
+                CCLog("clearMatchs: i:%d,j:%d", i,j);
+                //添加每一个 Emoji 到GamePlayingLayer
+                addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
+            }
+        }
+    }
+    //重置Matchs标志位矩阵
+    resetMatchMarkArray();
 }
 
 //Utility Method
@@ -232,20 +271,72 @@ CCPoint GamePlayingLayer::getBlock_ij_AnchorPosition(int i, int j)
 //Touch Event Processing Method
 bool GamePlayingLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
-    bool bRet = true;
-    return bRet;
+    CCPoint blocks_0_0 = ccp(m_fEmojiBlockCenter_X - BLOCKS_IN_ROW*m_fEmojiWidth*0.5,m_fEmojiBlockCenter_Y - BLOCKS_IN_COLUMN*m_fEmojiWidth*0.5);
+    CCPoint blocks_1_1 = ccp(m_fEmojiBlockCenter_X + BLOCKS_IN_ROW*m_fEmojiWidth*0.5,m_fEmojiBlockCenter_Y + BLOCKS_IN_COLUMN*m_fEmojiWidth*0.5);
+
+    //The touch is in the blocks
+    if (pTouch->getLocation().x > blocks_0_0.x && pTouch->getLocation().x < blocks_1_1.x && pTouch->getLocation().y > blocks_0_0.y && pTouch->getLocation().y < blocks_1_1.y) {
+        //Calculate which block is touched and mark it with yellow background color
+        int i = (int)(pTouch->getLocation().y - blocks_0_0.y)/(int)m_fEmojiWidth;
+        int j = (int)(pTouch->getLocation().x - blocks_0_0.x)/(int)m_fEmojiWidth;
+        m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+        //Mark begin block
+        m_beginBlockI = i;
+        m_beginBlockJ = j;
+    }
+    return true;
 }
 
 void GamePlayingLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
-}
-
-void GamePlayingLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
-{
-}
-
-void GamePlayingLayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent)
-{
+    CCPoint blocks_0_0 = ccp(m_fEmojiBlockCenter_X - BLOCKS_IN_ROW*m_fEmojiWidth*0.5,m_fEmojiBlockCenter_Y - BLOCKS_IN_COLUMN*m_fEmojiWidth*0.5);
+    CCPoint blocks_1_1 = ccp(m_fEmojiBlockCenter_X + BLOCKS_IN_ROW*m_fEmojiWidth*0.5,m_fEmojiBlockCenter_Y + BLOCKS_IN_COLUMN*m_fEmojiWidth*0.5);
+    
+    //The touch is in the blocks
+    if (pTouch->getLocation().x > blocks_0_0.x && pTouch->getLocation().x < blocks_1_1.x && pTouch->getLocation().y > blocks_0_0.y && pTouch->getLocation().y < blocks_1_1.y) {
+        //Calculate which block is touched and mark it with yellow background color
+        int i = (int)(pTouch->getLocation().y - blocks_0_0.y)/(int)m_fEmojiWidth;
+        int j = (int)(pTouch->getLocation().x - blocks_0_0.x)/(int)m_fEmojiWidth;
+        //Touch End的点在上下左右 四个block
+        if (1 == (i-m_beginBlockI)*(i-m_beginBlockI) + (j-m_beginBlockJ)*(j-m_beginBlockJ)){
+            EmojiSprite *tempSwitch = m_EmojiBlocks[m_beginBlockI][m_beginBlockJ];
+            m_EmojiBlocks[m_beginBlockI][m_beginBlockJ] = m_EmojiBlocks[i][j];
+            m_EmojiBlocks[i][j] = tempSwitch;
+            tempSwitch = NULL;
+            //Match happens
+            if(checkMatch(i, j) || checkMatch(m_beginBlockI, m_beginBlockJ))
+            {
+                for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+                    for (int j = 0; j< BLOCKS_IN_ROW; j++) {
+                        //设置每个block Emoji 的位置
+                        CCLog("ccTouchEnded() : i:%d,j:%d", i,j);
+                        m_EmojiBlocks[i][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(i, j));
+                        m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccWHITE);
+                    }
+                }
+                //将Matchs的Emoji背景设置为黄色
+                for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+                    for (int j = 0; j< BLOCKS_IN_ROW; j++) {
+                        {
+                            if (m_matchMark[i][j])
+                                m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                        }
+                    }
+                }
+                //1s后消除Matchs的Emoji
+                //Set one schedule to run the update function which will set up the next scene
+                CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(GamePlayingLayer::clearMatchsEmoji),this,1,false);
+            }
+            else {
+                EmojiSprite* tempSpriteSwitchBack = m_EmojiBlocks[m_beginBlockI][m_beginBlockJ];
+                m_EmojiBlocks[m_beginBlockI][m_beginBlockJ] = m_EmojiBlocks[i][j];
+                m_EmojiBlocks[i][j] = tempSpriteSwitchBack;
+                tempSpriteSwitchBack = NULL;
+                //复原Touch began block背景颜色
+                m_EmojiBlocks[m_beginBlockI][m_beginBlockJ]->m_pEmojiSprite->setColor(ccWHITE);
+            }
+        }
+    }
 }
 
 

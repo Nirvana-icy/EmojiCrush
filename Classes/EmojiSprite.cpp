@@ -71,6 +71,10 @@ bool EmojiSprite::initSpriteWithType(int emojiType)
                 m_EmojiType = Sprite_Happy;
                 break;
             //init the special Sprite from texture packer image file
+            case Sprite_Santa:
+                m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Santa.png");
+                m_EmojiType = Sprite_Gift;
+                break;
             case Sprite_Gift:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Gift.png");
                 m_EmojiType = Sprite_Gift;
