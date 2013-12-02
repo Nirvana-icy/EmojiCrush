@@ -49,10 +49,12 @@ bool GamePlayingLayer::initTheGame()
                 addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
             }
         }
-        //if the first row contain Santa -> change santa to Sprite_Zuohengheng
+        //if the first row contain Santa -> Switch the Santa Sprite block with the block which upside Santa  
         for (int j = 0; j < BLOCKS_IN_ROW; j++) {
             if (Sprite_Santa == m_EmojiBlocks[0][j]->m_EmojiType) {
-                m_EmojiBlocks[0][j] = EmojiSprite::createEmojiWithType(Sprite_Zuohengheng);
+                EmojiSprite *temp_pEmojiSprite = m_EmojiBlocks[1][j];
+                m_EmojiBlocks[1][j] = m_EmojiBlocks[0][j];
+                m_EmojiBlocks[0][j] = temp_pEmojiSprite;
             }
         }
         //Check Match after random init..If match happens => Recreate the emoji till none matchs happen..
