@@ -49,20 +49,30 @@ bool GamePlayingLayer::initTheGame()
                 addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
             }
         }
-        //Check Match after random init..
+        //Check Match after random init..If match happens => Recreate the emoji till none matchs happen..
         bool bMatch = false;
-        for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
-            for (int j = 0; j < BLOCKS_IN_ROW; j++) {
-                bMatch = bMatch || checkMatch(i, j);
-                if(checkMatch(i, j))
-                {
-                    CCLog("Match happen in x:%d, y:%d", i,j);
+        do{
+            bMatch = false;
+            for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+                for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+                    //bMatch = bMatch || checkMatch(i, j);
+                    if(checkMatch(i, j)){
+                        m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();
+                        bMatch = true;
+                    }
                 }
             }
-        }
-        if (bMatch) {
-            //delete the Match Emoji and Generate the new Emoji
-        }
+        }while(bMatch);
+        // if (bMatch) {
+        //     //delete the Match Emoji and Generate the new Emoji
+        //     for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+        //         for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+        //             if(m_matchMark[i][j]) {
+        //                 m_EmojiBlocks[i][j] = NULL;
+        //             }
+        //         }
+        //     }
+        // }
         //if the first row contain Santa -> Get the point and move down the Santa
         //Then generate the new Emoji
     }
