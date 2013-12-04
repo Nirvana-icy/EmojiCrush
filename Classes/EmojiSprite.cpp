@@ -17,25 +17,17 @@ EmojiSprite::EmojiSprite()
 EmojiSprite* EmojiSprite::createEmojiWithType(int emojiType)
 {
     EmojiSprite *p_EmojiSprite = new EmojiSprite();
-    if (p_EmojiSprite && p_EmojiSprite->initSpriteWithType(emojiType))
-    {
-        p_EmojiSprite->autorelease();
-        return p_EmojiSprite;
-    }
-    CC_SAFE_DELETE(p_EmojiSprite);
-    return NULL;
+    p_EmojiSprite->initSpriteWithType(emojiType);
+    p_EmojiSprite->autorelease();
+    return p_EmojiSprite;
 }
 
 EmojiSprite* EmojiSprite::createEmojiWithRandom()
 {
     EmojiSprite *p_EmojiSprite = new EmojiSprite();
-    if (p_EmojiSprite && p_EmojiSprite->initSpriteWithRandom())
-    {
-        p_EmojiSprite->autorelease();
-        return p_EmojiSprite;
-    }
-    CC_SAFE_DELETE(p_EmojiSprite);
-    return NULL;
+    p_EmojiSprite->initSpriteWithRandom();
+    p_EmojiSprite->autorelease();
+    return p_EmojiSprite;
 }
 
 bool EmojiSprite::initSpriteWithType(int emojiType)
@@ -95,9 +87,9 @@ bool EmojiSprite::initSpriteWithType(int emojiType)
                 break;
         }
     }
-    else
-    {
+    else {
         bRet = false;
+        CCLog("CCNode::init() in initSpriteWithType fail");
     }
     return bRet;
 }
@@ -111,9 +103,9 @@ bool EmojiSprite::initSpriteWithRandom()
         float f_Random = CCRANDOM_0_1()*6; // if f_Random == 6 -> init one Santa Emoji
         this->initSpriteWithType((int)f_Random);
     }
-    else
-    {
+    else {
         bRet = false;
+        CCLog("CCNode::init() in initSpriteWithRandom fail");
     }
     return bRet;
 }
