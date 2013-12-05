@@ -45,6 +45,8 @@ private:
     bool m_matchMark[BLOCKS_IN_COLUMN][BLOCKS_IN_ROW];
     int m_beginBlockI;
     int m_beginBlockJ;
+    CCPoint m_Blocks_0_0;
+    CCPoint m_Blocks_1_1;
 };
 
 #endif /* defined(__EmojiCrush__GamePlayingLayer__) */
