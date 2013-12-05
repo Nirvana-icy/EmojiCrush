@@ -248,20 +248,28 @@ void GamePlayingLayer::clearMatchsEmoji(){
         }
     } //End of the outside for 
     
-    //计算每一个m_EmojiBlocks[i][j]的 lack[i]
+    //计算每一个m_EmojiBlocks[i][j]的 slideDownCounter
      for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
         for (int j = 0; j < BLOCKS_IN_ROW; j++) {
             if(!m_matchMark[i][j]) {
-                int lack = 0;
+                int slideDownCounter = 0;
                 for(int p = 0; p < j; p++){
-                    if(!m_matchMark[i][p])  lack++;
+                    if(!m_matchMark[i][p])  slideDownCounter++;
                 }
-                m_EmojiBlocks[i][j]->m_slideDownCounter = lack;
+                m_EmojiBlocks[i][j]->m_slideDownCounter = slideDownCounter;
             }
         }
     } //End of the outside for 
     
-    //生成新的Emoji 计算 lack[i]
+    //计算 slideDownCounterInColumn 
+    int slideDownCounterInColumn[BLOCKS_IN_ROW] = {0};
+    for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+        for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+            if(m_matchMark[i][j]) slideDownCounterInColumn++;
+        }
+        slideDownCounterInColumn[j] = slideDownCounterInColumn;
+    }
+    //依据slideDownCounterInColumn[j]生成新的Emoji
     //更新每一个Emoji的位置
     
     //重置Matchs标志位矩阵
