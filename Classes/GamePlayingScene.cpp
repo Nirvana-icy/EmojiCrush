@@ -33,11 +33,11 @@ bool GamePlayingScene::init()
         //Add Background Layer to the scene with the zOrder zOrder_BackgroundLayer
         addChild(pBackgroundLayer);
         //init the GamePlayingLayer
-        GamePlayingLayer *pGamePlayingLayer = new GamePlayingLayer();
-        if (pGamePlayingLayer->initTheGame()) {
-            pGamePlayingLayer->autorelease();
+        m_pGamePlayingLayer = new GamePlayingLayer();
+        if (m_pGamePlayingLayer && m_pGamePlayingLayer->initTheGame()) {
+            m_pGamePlayingLayer->autorelease();
         }
-        addChild(pGamePlayingLayer);
+        addChild(m_pGamePlayingLayer);
         //init the Background Music
         SimpleAudioEngine::sharedEngine()->preloadBackgroundMusic("Gaming_BGM.mp3");
         SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.3);

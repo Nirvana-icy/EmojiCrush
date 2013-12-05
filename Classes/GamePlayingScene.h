@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "GamePlayingLayer.h"
 
 using namespace cocos2d;
 
@@ -23,7 +24,9 @@ public:
     virtual void onEnter();
     virtual void onExit();
     virtual bool init();
-    
+protected:
+private:
+    GamePlayingLayer *m_pGamePlayingLayer;
 };
 
 #endif /* defined(__EmojiCrush__GamePlayingScene__) */

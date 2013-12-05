@@ -10,12 +10,17 @@
 
 GamePlayingLayer::GamePlayingLayer()
 {
-    this->init();
+    //Set GamePlayingLayer touchable
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
 }
 
 GamePlayingLayer::~GamePlayingLayer()
 {
-    
+    for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+        for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+            m_EmojiBlocks[i][j]->release();
+        }
+    }
 }
 
 bool GamePlayingLayer::init()
@@ -30,13 +35,12 @@ bool GamePlayingLayer::init()
     m_beginBlockI = BLOCKS_IN_ROW;  //Set default value to this out of array boundry value to indicate invalid
     m_beginBlockJ = BLOCKS_IN_COLUMN;
     
-    CCPoint m_Blocks_0_0 = ccp(m_fEmojiBlockCenter_X - BLOCKS_IN_ROW*m_fEmojiWidth*0.5,m_fEmojiBlockCenter_Y - BLOCKS_IN_COLUMN*m_fEmojiWidth*0.5);
-    CCPoint m_Blocks_1_1 = ccp(m_fEmojiBlockCenter_X + BLOCKS_IN_ROW*m_fEmojiWidth*0.5,m_fEmojiBlockCenter_Y + BLOCKS_IN_COLUMN*m_fEmojiWidth*0.5);
+    m_Blocks_0_0 = ccp(m_fEmojiBlockCenter_X - BLOCKS_IN_ROW*m_fEmojiWidth*0.5,m_fEmojiBlockCenter_Y - BLOCKS_IN_COLUMN*m_fEmojiWidth*0.5);
+    m_Blocks_1_1 = ccp(m_fEmojiBlockCenter_X + BLOCKS_IN_ROW*m_fEmojiWidth*0.5,m_fEmojiBlockCenter_Y + BLOCKS_IN_COLUMN*m_fEmojiWidth*0.5);
     //init m_matchMark[BLOCKS_IN_ROW][BLOCKS_IN_COLUMN] with the value false
     resetMatchMarkArray();
+   // m_EmojiBlocks
     CCLog("resetMatchMarkArray() is called in the GamePlayingLayer::init().");
-    //Set GamePlayingLayer touchable
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, 0, true);
     return bRet;
 }
 
@@ -50,7 +54,7 @@ bool GamePlayingLayer::initTheGame()
         for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
             for (int j = 0; j < BLOCKS_IN_ROW; j++) {
                 m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();
-                CCLog("i:%d, j:%d", i,j);
+                m_EmojiBlocks[i][j]->retain();
                 CCAssert(m_EmojiBlocks[i][j], "createEmojiWithRandom should not generate NULL Emoji!");
             }
         }
@@ -71,7 +75,9 @@ bool GamePlayingLayer::initTheGame()
                 for (int j = 0; j < BLOCKS_IN_ROW; j++) {
                     //bMatch = bMatch || checkMatch(i, j);
                     if(checkMatch(i, j)){
+                        m_EmojiBlocks[i][j]->release();
                         m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();
+                        m_EmojiBlocks[i][j]->retain();
                         bMatch = true;
                     }
                 }
@@ -263,11 +269,12 @@ void GamePlayingLayer::clearMatchsEmoji(){
     
     //计算 slideDownCounterInColumn 
     int slideDownCounterInColumn[BLOCKS_IN_ROW] = {0};
+    int counter = 0;
     for (int j = 0; j < BLOCKS_IN_ROW; j++) {
         for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
-            if(m_matchMark[i][j]) slideDownCounterInColumn++;
+            if(m_matchMark[i][j]) counter++;
         }
-        slideDownCounterInColumn[j] = slideDownCounterInColumn;
+        slideDownCounterInColumn[j] = counter;
     }
     //依据slideDownCounterInColumn[j]生成新的Emoji
     //更新每一个Emoji的位置
@@ -317,7 +324,7 @@ bool GamePlayingLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 void GamePlayingLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 {
     //The touch is in the blocks
-    if (pTouch->getLocation().x > m_Blocks_0_0.x && pTouch->getLocation().x < m_Blocks_1_1.x && pTouch->getLocation().y > blocks_0_0.y && pTouch->getLocation().y < m_Blocks_1_1.y) {
+    if (pTouch->getLocation().x > m_Blocks_0_0.x && pTouch->getLocation().x < m_Blocks_1_1.x && pTouch->getLocation().y > m_Blocks_0_0.y && pTouch->getLocation().y < m_Blocks_1_1.y) {
         //Calculate which block is touched and mark it with yellow background color
         int i = (int)(pTouch->getLocation().y - m_Blocks_0_0.y)/(int)m_fEmojiWidth;
         int j = (int)(pTouch->getLocation().x - m_Blocks_0_0.x)/(int)m_fEmojiWidth;
