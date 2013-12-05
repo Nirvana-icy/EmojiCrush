@@ -12,22 +12,35 @@ EmojiSprite::EmojiSprite()
 {
     m_slideDownCounter = 0;
     m_EmojiType = invalid_Type;
+    m_pEmojiSprite = NULL;
 }
 
 EmojiSprite* EmojiSprite::createEmojiWithType(int emojiType)
 {
     EmojiSprite *p_EmojiSprite = new EmojiSprite();
-    p_EmojiSprite->initSpriteWithType(emojiType);
-    p_EmojiSprite->autorelease();
-    return p_EmojiSprite;
+    if(p_EmojiSprite && p_EmojiSprite->initSpriteWithType(emojiType)) {
+        p_EmojiSprite->autorelease();
+        return p_EmojiSprite;
+    }
+    else {
+        CC_SAFE_DELETE(p_EmojiSprite);
+        CCLog("EmojiSprite::createEmojiWithType() failed to create new EmojiSprite");
+        return NULL;
+    }
 }
 
 EmojiSprite* EmojiSprite::createEmojiWithRandom()
 {
     EmojiSprite *p_EmojiSprite = new EmojiSprite();
-    p_EmojiSprite->initSpriteWithRandom();
-    p_EmojiSprite->autorelease();
-    return p_EmojiSprite;
+    if(p_EmojiSprite && p_EmojiSprite->initSpriteWithRandom()) {
+        p_EmojiSprite->autorelease();
+        return p_EmojiSprite;
+    }
+    else {
+        CC_SAFE_DELETE(p_EmojiSprite);
+        CCLog("EmojiSprite::createEmojiWithRandom() failed to create new EmojiSprite");
+        return NULL;
+    }
 }
 
 bool EmojiSprite::initSpriteWithType(int emojiType)
