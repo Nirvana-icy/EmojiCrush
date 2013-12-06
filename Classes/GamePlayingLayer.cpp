@@ -18,7 +18,7 @@ GamePlayingLayer::~GamePlayingLayer()
 {
     for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
         for (int j = 0; j < BLOCKS_IN_ROW; j++) {
-            m_EmojiBlocks[i][j]->release();
+            CC_SAFE_RELEASE(m_EmojiBlocks[i][j]);
         }
     }
 }
@@ -249,16 +249,20 @@ void GamePlayingLayer::clearMatchsEmoji(){
     for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
         for (int j = 0; j < BLOCKS_IN_ROW; j++) {
             if(m_matchMark[i][j]) {
+                //消除match的Emoji
                 removeChild(m_EmojiBlocks[i][j]);
+                m_EmojiBlocks[i][j]->release;
             }
         }
     } //End of the outside for 
     
     //计算每一个m_EmojiBlocks[i][j]的 slideDownCounter
+     int slideDownCounter = 0;
+     
      for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
         for (int j = 0; j < BLOCKS_IN_ROW; j++) {
             if(!m_matchMark[i][j]) {
-                int slideDownCounter = 0;
+                slideDownCounter = 0;
                 for(int p = 0; p < j; p++){
                     if(!m_matchMark[i][p])  slideDownCounter++;
                 }
@@ -267,20 +271,29 @@ void GamePlayingLayer::clearMatchsEmoji(){
         }
     } //End of the outside for 
     
-    //计算 slideDownCounterInColumn 
-    int slideDownCounterInColumn[BLOCKS_IN_ROW] = {0};
+    //计算 emptyBlocksInColumn & topEmptyBlock & createEmojiWithRandom
     int counter = 0;
+    int emptyBlocksInColumn[BLOCKS_IN_ROW] = {0};
+    int topEmptyBlock[BLOCKS_IN_ROW] = {0};
+    
     for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+        counter = 0;
         for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
-            if(m_matchMark[i][j]) counter++;
+            if(m_matchMark[i][j]) {
+                topEmptyBlock[j] = i; //Mark top empty block's ID
+                counter++;
+                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();   //暂时借用消除的block 放置新生成的Emoji 现在m_matchMark[i][j]为True的block 表示新生成的Emoji
+                m_EmojiBlocks[i][j]->retain();
+            }
         }
-        slideDownCounterInColumn[j] = counter;
+        emptyBlocks[j] = counter;
     }
-    //依据slideDownCounterInColumn[j]生成新的Emoji
+
     //更新每一个Emoji的位置
     
     //重置Matchs标志位矩阵
     resetMatchMarkArray();
+    //检测当前阵列是否有matchs的情况..
 }
 
 //Utility Method
