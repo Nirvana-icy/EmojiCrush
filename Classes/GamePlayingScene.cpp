@@ -18,6 +18,7 @@ GamePlayingScene::GamePlayingScene()
 
 void GamePlayingScene::onEnter()
 {
+    CCScene::onEnter();
     SimpleAudioEngine::sharedEngine()->playBackgroundMusic("Gaming_BGM.mp3", true);
 }
 

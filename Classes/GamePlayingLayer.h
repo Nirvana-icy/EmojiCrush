@@ -36,17 +36,20 @@ public:
     void clearMatchsEmoji();
 protected:
 private:
+    //Emoji Block Array & matchMark Array
+    EmojiSprite* m_EmojiBlocks[BLOCKS_IN_COLUMN][BLOCKS_IN_ROW];
+    bool m_matchMark[BLOCKS_IN_COLUMN][BLOCKS_IN_ROW];
+    
     float m_fEmojiWidth; //适配不同屏幕分辨率后Emoji的宽度
     //所有Emoji Blocks的中心
     float m_fEmojiBlockCenter_X;
     float m_fEmojiBlockCenter_Y;
-    //Emoji Block Array & matchMark Array
-    EmojiSprite* m_EmojiBlocks[BLOCKS_IN_COLUMN][BLOCKS_IN_ROW];
-    bool m_matchMark[BLOCKS_IN_COLUMN][BLOCKS_IN_ROW];
-    int m_beginBlockI;
-    int m_beginBlockJ;
+    //Blocks's size
     CCPoint m_Blocks_0_0;
     CCPoint m_Blocks_1_1;
+    //Touch Begin Block's ID
+    int m_beginBlockI;
+    int m_beginBlockJ;
 };
 
 #endif /* defined(__EmojiCrush__GamePlayingLayer__) */

@@ -10,7 +10,6 @@
 
 EmojiSprite::EmojiSprite()
 {
-    m_slideDownCounter = 0;
     m_EmojiType = invalid_Type;
     m_pEmojiSprite = NULL;
 }

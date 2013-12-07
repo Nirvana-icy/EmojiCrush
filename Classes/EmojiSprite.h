@@ -47,7 +47,6 @@ public:
     void setSlideDownConter(int conter);
     
     CCSprite *m_pEmojiSprite;
-    int m_slideDownCounter;
     EmojiType m_EmojiType;
     
 protected:
