@@ -54,7 +54,7 @@ bool GamePlayingLayer::initTheGame()
         //在每一个block 填充随机生成的Emoji
         for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
             for (int j = 0; j < BLOCKS_IN_ROW; j++) {
-                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();
+                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom(Sprite_Tutu, Sprite_Santa);
                 m_EmojiBlocks[i][j]->retain();
                 m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccWHITE);
                 CCAssert(m_EmojiBlocks[i][j], "createEmojiWithRandom should not generate NULL Emoji!");
@@ -78,7 +78,7 @@ bool GamePlayingLayer::initTheGame()
                     //bMatch = bMatch || checkMatch(i, j);
                     if(checkMatch(i, j)){
                         m_EmojiBlocks[i][j]->release();
-                        m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();
+                        m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom(Sprite_Tutu, Sprite_Santa);
                         m_EmojiBlocks[i][j]->retain();
                         m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccWHITE);
                         bMatch = true;
@@ -238,15 +238,20 @@ void GamePlayingLayer::clearMatchsEmoji(){
                 m_EmojiBlocks[i][j]->m_pEmojiSprite->setOpacity(0);
                 removeChild(m_EmojiBlocks[i][j]);
                 m_EmojiBlocks[i][j]->release();
+                m_EmojiBlocks[i][j] = NULL;
             }
         }
     } //End of the outside for 
         
     //计算 emptyBlocksInColumn & topEmptyBlock & createEmojiWithRandom
     int counter = 0;
-    int emptyBlocksInColumn[BLOCKS_IN_ROW] = {0};
+    int emptyBlocksInColumn[BLOCKS_IN_ROW];
     int topEmptyBlock[BLOCKS_IN_ROW];
-    for (int i = 0; i < BLOCKS_IN_ROW; i++) topEmptyBlock[i] = BLOCKS_IN_COLUMN;
+    
+    for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+        emptyBlocksInColumn[j] = 0;
+        topEmptyBlock[j] = BLOCKS_IN_COLUMN;
+    }
     
     for (int j = 0; j < BLOCKS_IN_ROW; j++) {
         counter = 0;
@@ -254,24 +259,70 @@ void GamePlayingLayer::clearMatchsEmoji(){
             if(m_matchMark[i][j]) {
                 topEmptyBlock[j] = i; //Mark top empty block's ID
                 counter++;
-                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom();   //暂时借用消除的block 放置新生成的Emoji 现在m_matchMark[i][j]为True的block 表示新生成的Emoji
+                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom(Sprite_Tutu, Sprite_Xmas_Tree);   //暂时借用消除的block 放置新生成的Emoji 现在m_matchMark[i][j]为True的block 表示新生成的Emoji
                 m_EmojiBlocks[i][j]->retain();
+                CCLog("Generate new emoji and put it in m_EmojiBlocks[%d][%d] temporarily.",i,j);
                 addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
             }
         }
         emptyBlocksInColumn[j] = counter;
     }
+    //更新column emoji的次序 新产生的emoji依次放在column的上面
 
+    for (int j = 0; j < BLOCKS_IN_ROW; j++) {
+        if (emptyBlocksInColumn[j] != 0 ) {
+            EmojiSprite* temp[emptyBlocksInColumn[j]];
+            int tempArrayIndex = 0;
+            for (int i = topEmptyBlock[j] + 1 - emptyBlocksInColumn[j]; i < BLOCKS_IN_COLUMN; i++){
+                //Switch this new emoji to temp array
+                if (m_matchMark[i][j]) {
+                    temp[tempArrayIndex] = m_EmojiBlocks[i][j];
+                    tempArrayIndex++;
+                }
+                //update the old emoji's(which is above the topMatchs emoji) position in the array
+                else m_EmojiBlocks[i - emptyBlocksInColumn[j]][j] = m_EmojiBlocks[i][j];
+            }
+            //将tempArray中的Emoji放到column顶部
+            for (int p = 0; p < tempArrayIndex; p++) {
+                m_EmojiBlocks[BLOCKS_IN_COLUMN - emptyBlocksInColumn[j] + p][j] = temp[p];
+                //设置新产生emoji的位置
+                m_EmojiBlocks[BLOCKS_IN_COLUMN - emptyBlocksInColumn[j] + p][j]->m_pEmojiSprite->setPosition(getBlock_ij_AnchorPosition(BLOCKS_IN_COLUMN + p, j));
+            }
+        }
+    }
     //Move down被消除Emoji上面的Emoji
     for (int j = 0; j < BLOCKS_IN_ROW; j++) {
-        for (int i = topEmptyBlock[j] + 1; i < BLOCKS_IN_COLUMN; i++) {
-            CCActionInterval* moveDown = CCMoveBy::create(0.3*emptyBlocksInColumn[j], ccp(0, -emptyBlocksInColumn[j]*m_fEmojiWidth));
+        for (int i = topEmptyBlock[j] + 1 - emptyBlocksInColumn[j]; i < BLOCKS_IN_COLUMN; i++) {
+            CCActionInterval* moveDown = CCMoveBy::create(EMOJI_MOVE_DOWN_TIME*emptyBlocksInColumn[j], ccp(0, -emptyBlocksInColumn[j]*m_fEmojiWidth));
+            CCLog("m_EmojiBlocks[%d][%d] is trying to run move down action",i,j);
             m_EmojiBlocks[i][j]->m_pEmojiSprite->runAction(moveDown);
         }
     }
+    //calculate the emoji change area
+
     //重置Matchs标志位矩阵
     resetMatchMarkArray();
+    
     //检测当前阵列是否有matchs的情况..
+    bool bMatch = false;
+    for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+        for (int j = 0; j < BLOCKS_IN_COLUMN; j++) {
+            bMatch = bMatch || checkMatch(i, j);
+        }
+        if (bMatch) {
+            for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
+                for (int j = 0; j< BLOCKS_IN_ROW; j++) {
+                    if (m_matchMark[i][j]) {
+                        CCLog("m_matchMark[%d][%d] is true",i,j);
+                        m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
+                    }
+                }
+            }
+            //1s后消除Matchs的Emoji
+            //Set one schedule to run the update function which will set up the next scene
+            CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(GamePlayingLayer::clearMatchsEmoji),this,MATCHS_KEEP_TIME,false);
+        }
+    }
 }
 
 //Utility Method
@@ -330,8 +381,8 @@ void GamePlayingLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
             if(checkMatch(i, j) || checkMatch(m_beginBlockI, m_beginBlockJ))
             {
                 //If match happens => Swap the touch begin and touch end emoji
-                CCActionInterval* moveTouchEndSpriteAction = CCMoveTo::create(0.5, getBlock_ij_AnchorPosition(i, j));
-                CCActionInterval* moveTouchBeginSpriteAction = CCMoveTo::create(0.5, getBlock_ij_AnchorPosition(m_beginBlockI, m_beginBlockJ));
+                CCActionInterval* moveTouchEndSpriteAction = CCMoveTo::create(EMOJI_SWAP_TIME, getBlock_ij_AnchorPosition(i, j));
+                CCActionInterval* moveTouchBeginSpriteAction = CCMoveTo::create(EMOJI_SWAP_TIME, getBlock_ij_AnchorPosition(m_beginBlockI, m_beginBlockJ));
 
                 m_EmojiBlocks[i][j]->m_pEmojiSprite->runAction(moveTouchEndSpriteAction);
                 m_EmojiBlocks[m_beginBlockI][m_beginBlockJ]->m_pEmojiSprite->runAction(moveTouchBeginSpriteAction);
@@ -346,7 +397,7 @@ void GamePlayingLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
                     }
                 //1s后消除Matchs的Emoji
                 //Set one schedule to run the update function which will set up the next scene
-                CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(GamePlayingLayer::clearMatchsEmoji),this,1,false);
+                CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(GamePlayingLayer::clearMatchsEmoji),this,MATCHS_KEEP_TIME,false);
             }
             else {
                 EmojiSprite* tempSpriteSwitchBack = m_EmojiBlocks[m_beginBlockI][m_beginBlockJ];
@@ -361,5 +412,5 @@ void GamePlayingLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
 
 void GamePlayingLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
 {
-    //ccTouchEnded(pTouch, pEvent);
+    ccTouchEnded(pTouch, pEvent);
 }

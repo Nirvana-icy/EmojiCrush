@@ -38,13 +38,11 @@ public:
     EmojiSprite();
     ~EmojiSprite();
     
-    static EmojiSprite* createEmojiWithType(int emojiType);
-    static EmojiSprite* createEmojiWithRandom();
+    static EmojiSprite* createEmojiWithType(EmojiType emojiType);
+    static EmojiSprite* createEmojiWithRandom(EmojiType from, EmojiType to);
     
-    bool initSpriteWithType(int emojiType);
-    bool initSpriteWithRandom();
-    
-    void setSlideDownConter(int conter);
+    bool initSpriteWithType(EmojiType emojiType);
+    bool initSpriteWithRandom(EmojiType from, EmojiType to);
     
     CCSprite *m_pEmojiSprite;
     EmojiType m_EmojiType;
