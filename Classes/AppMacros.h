@@ -35,7 +35,7 @@
 
 #define EMOJI_MOVE_DOWN_TIME 0.22
 #define EMOJI_SWAP_TIME 0.35
-#define MATCHS_KEEP_TIME 1
+#define MATCHS_KEEP_TIME 0.8
 
 /* If you want to switch design resolution, change next line */
 #define TARGET_DESIGN_RESOLUTION_SIZE  DESIGN_RESOLUTION_480X320
