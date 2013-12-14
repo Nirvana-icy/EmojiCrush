@@ -33,8 +33,8 @@
 #define BLOCKS_IN_ROW 8
 #define BLOCKS_IN_COLUMN 8
 
-#define EMOJI_MOVE_DOWN_TIME 0.27
-#define EMOJI_SWAP_TIME 0.4
+#define EMOJI_MOVE_DOWN_TIME 0.22
+#define EMOJI_SWAP_TIME 0.35
 #define MATCHS_KEEP_TIME 1
 
 /* If you want to switch design resolution, change next line */
