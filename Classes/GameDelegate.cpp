@@ -31,7 +31,7 @@ GameDelegate* GameDelegate::sharedGameDelegate()
 
 void GameDelegate::init()
 {
-    
+    s_SharedGameDelegate = NULL;
 }
 
 void GameDelegate::startGame()

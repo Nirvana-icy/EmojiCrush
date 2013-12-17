@@ -27,10 +27,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
-    bool bRet = true;
+    
     GameDelegate::sharedGameDelegate()->showMainMenu();
     
-    return bRet;
+    return true;
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
