@@ -47,7 +47,7 @@ void GameDelegate::showMainMenu()
 {
     LoadingScene* pLoadingScene = new LoadingScene();
     pLoadingScene->autorelease();
-    if(!pLoadingScene->initWithTargetScene(TargetSceneMainMenu))
+    if(pLoadingScene && !pLoadingScene->initWithTargetScene(TargetSceneMainMenu))
         CCLOG("Init LoadingScene(from loadingScene to MainMenu Scene) failed");
     //run the loadingScene
     CCDirector::sharedDirector()->runWithScene(pLoadingScene);

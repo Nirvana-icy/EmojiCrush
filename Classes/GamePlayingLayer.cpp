@@ -54,7 +54,7 @@ bool GamePlayingLayer::initTheGame()
         //在每一个block 填充随机生成的Emoji
         for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
             for (int j = 0; j < BLOCKS_IN_ROW; j++) {
-                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom(Sprite_Tutu, Sprite_Santa);
+                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom(Sprite_Tutu, Sprite_Happy);
                 m_EmojiBlocks[i][j]->retain();
                 m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccWHITE);
                 CCAssert(m_EmojiBlocks[i][j], "createEmojiWithRandom should not generate NULL Emoji!");
@@ -241,7 +241,7 @@ void GamePlayingLayer::clearMatchsEmoji(){
                 m_EmojiBlocks[i][j] = NULL;
             }
         }
-    } //End of the outside for 
+    } //End of the for loop 
         
     //计算 emptyBlocksInColumn & topEmptyBlock & createEmojiWithRandom
     int counter = 0;
@@ -259,7 +259,7 @@ void GamePlayingLayer::clearMatchsEmoji(){
             if(m_matchMark[i][j]) {
                 topEmptyBlock[j] = i; //Mark top empty block's ID
                 counter++;
-                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom(Sprite_Tutu, Sprite_Xmas_Tree);   //暂时借用消除的block 放置新生成的Emoji 现在m_matchMark[i][j]为True的block 表示新生成的Emoji
+                m_EmojiBlocks[i][j] = EmojiSprite::createEmojiWithRandom(Sprite_Tutu, Sprite_Happy);   //暂时借用消除的block 放置新生成的Emoji 现在m_matchMark[i][j]为True的block 表示新生成的Emoji
                 m_EmojiBlocks[i][j]->retain();
                 CCLog("Generate new emoji and put it in m_EmojiBlocks[%d][%d] temporarily.",i,j);
                 addChild(m_EmojiBlocks[i][j]->m_pEmojiSprite);
@@ -304,23 +304,25 @@ void GamePlayingLayer::clearMatchsEmoji(){
     resetMatchMarkArray();
     
     //检测当前阵列是否有matchs的情况..
+    int moveDownStep = BLOCKS_IN_COLUMN;
     bool bMatch = false;
-    for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
-        for (int j = 0; j < BLOCKS_IN_COLUMN; j++) {
+    for (int i = BLOCKS_IN_COLUMN -1; i >=0 ; i--) {
+        for (int j = BLOCKS_IN_ROW - 1; j >= 0; j--) {
             bMatch = bMatch || checkMatch(i, j);
         }
         if (bMatch) {
-            for (int i = 0; i < BLOCKS_IN_COLUMN; i++) {
-                for (int j = 0; j< BLOCKS_IN_ROW; j++) {
+            for (int i = BLOCKS_IN_COLUMN - 1; i >= 0; i--) {
+                for (int j = BLOCKS_IN_ROW - 1; j >= 0; j--) {
                     if (m_matchMark[i][j]) {
+                        if(i < moveDownStep) moveDownStep = i;
                         CCLog("m_matchMark[%d][%d] is true",i,j);
                         m_EmojiBlocks[i][j]->m_pEmojiSprite->setColor(ccYELLOW);
                     }
                 }
             }
-            //1s后消除Matchs的Emoji
+            //新生成的emoji落到位置 后消除Matchs的Emoji
             //Set one schedule to run the update function which will set up the next scene
-            CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(GamePlayingLayer::clearMatchsEmoji),this,MATCHS_KEEP_TIME,false);
+            CCDirector::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(GamePlayingLayer::clearMatchsEmoji),this,(BLOCKS_IN_COLUMN - moveDownStep)*EMOJI_MOVE_DOWN_TIME,false);
         }
     }
 }

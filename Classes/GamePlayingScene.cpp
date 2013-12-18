@@ -27,7 +27,7 @@ bool GamePlayingScene::init()
     if (CCScene::init()) {
         CCLayer *pBackgroundLayer = CCLayer::create();
         //Load the Background Img and add it to the layer
-        CCSprite    *pBackgroundImg = CCSprite::create();
+        CCSprite *pBackgroundImg = CCSprite::create();
         pBackgroundImg->initWithFile("Gaming_Background.png");
         pBackgroundImg->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width/2, CCDirector::sharedDirector()->getWinSize().height/2));
         pBackgroundLayer->addChild(pBackgroundImg);

@@ -2,6 +2,7 @@
 
 MainMenuView::MainMenuView()
 {
+    
 }
 
 bool MainMenuView::init(bool fromGame)

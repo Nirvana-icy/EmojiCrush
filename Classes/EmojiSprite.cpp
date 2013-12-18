@@ -77,7 +77,7 @@ bool EmojiSprite::initSpriteWithType(EmojiType emojiType)
             //init the special Sprite from texture packer image file
             case Sprite_Santa:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Santa.png");
-                m_EmojiType = Sprite_Gift;
+                m_EmojiType = Sprite_Santa;  //Treate Santa as Gift now
                 break;
             case Sprite_Gift:
                 m_pEmojiSprite = CCSprite::createWithSpriteFrameName("Gift.png");
@@ -112,7 +112,8 @@ bool EmojiSprite::initSpriteWithRandom(EmojiType from, EmojiType to)
     if(CCNode::init())
     {
         //init the Sprite with random
-        float f_Random = CCRANDOM_0_1()*to + from; // if f_Random == 6 -> init one Santa Emoji
+        float f_Random = CCRANDOM_0_1()*(to + 1 - from) + from; // if f_Random == 6 -> init one Santa Emoji
+        //if(to + 1 == f_Random) f_Random = to;
         this->initSpriteWithType((EmojiType)f_Random);
     }
     else {
