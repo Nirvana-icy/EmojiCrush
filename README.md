@@ -18,3 +18,5 @@ QQ/Emoj表情元素的消除类游戏   一局内屏幕下方积攒某一表情�
 More:
 Devil模式 -- 引入Emoji表情中的惊恐 -> 若惊恐表情被消落 则灭掉一颗表情
 连消竞速模式 -- 限定时间呢 体验消除的快感 
+
+![image](https://raw.githubusercontent.com/Nirvana-icy/Touch_Signal_of_Android_Device_Touch_Screen/master/Touch_Signal/EmojCrash.png)
